@@ -7,25 +7,25 @@ CACHE_RSS="${HOME}/.cache/yt-feeder/RSS"
 
 if [ $# -eq 0 ]
 then
-    if [ ! -d $MAINFOLDER ]
+    if [ ! -d "$MAINFOLDER" ]
     then
-        mkdir -p $MAINFOLDER
-        touch ${CONFIG}
+        mkdir -p "$MAINFOLDER"
+        touch "$CONFIG"
     fi
-    if [ ! -f $CONFIG ]
+    if [ ! -f "$CONFIG" ]
     then
-        touch $CONFIG
+        touch "$CONFIG"
     fi
-    if [ ! -d $CACHE_RSS ]
+    if [ ! -d "$CACHE_RSS" ]
     then
-        mkdir -p $CACHE_RSS
+        mkdir -p "$CACHE_RSS"
     fi
 fi
 
 if [ $# -eq 0 ]
 then
     echo "refresh(it may take a while)"
-    ls -1 $CACHE_RSS | sed "s/^/-> /"
+    ls -1 "$CACHE_RSS" | sed "s/^/-> /"
 else
     if [ x"$@" = x"refresh(it may take a while)" ]
     then
@@ -38,20 +38,38 @@ else
                 wget $FEED -O "$CACHE_RSS/$NAME"
             done < $CONFIG
         fi
-        ls -1 $CACHE_RSS | sed "s/^/-> /"
+        ls -1 "$CACHE_RSS" | sed "s/^/-> /"
+    elif [ x"$@" = x"watch(best)" ]
+    then
+        LINK=$( cat "$CACHE/link" )
+        coproc player ( nohup mpv --ytdl-format=best "$LINK" > /dev/null 2>&1 ) &&
+        rm "$CACHE/link"
+    elif [ x"$@" = x"watch(worst)" ]
+    then
+        LINK=$( cat "$CACHE/link" )
+        coproc player ( nohup mpv --ytdl-format=worst "$LINK" > /dev/null 2>&1 ) &&
+        rm "$CACHE/link"
+    elif [ x"$@" = x"download" ]
+    then
+        LINK=$( cat "$CACHE/link" )
+        coproc player ( nohup youtube-dl -f best -o "$HOME/Videos/%(title)s.%(ext)s" "$LINK" > /dev/null 2>&1 ) &&
+        rm $CACHE/last
     else
         CHECK=$@
         if [ x${CHECK:0:2} = x"->" ]
         then
-            echo ${CHECK:3} > $CACHE/last
+            echo ${CHECK:3} > "$CACHE/last"
             TAG="media:title"
             cat "$CACHE_RSS/${CHECK:3}" | grep "<title>" | sed -e :a -e 's/<[^>]*>//g;/</N;//ba' | tail -n +2
         else
             TITLE=$( cat $CACHE/last )
             VIDEO=$( echo $@ )
             LINK=$( cat "$CACHE_RSS/$TITLE" | grep -A 1 "<title>$VIDEO" | tail -n1 | sed -r 's/^.+href="([^"]+)".+$/\1/')
-            coproc player ( nohup mpv --ytdl-format=worst "$LINK" > /dev/null 2>&1 ) &&
-            rm $CACHE/last
+            rm "$CACHE/last"
+            echo $LINK > "$CACHE/link"
+            echo "watch(best)"
+            echo "watch(worst)"
+            echo "download"
         fi
     fi
 fi
