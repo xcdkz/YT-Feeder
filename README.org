@@ -1,0 +1,40 @@
+* Introduction
+YT-Feeder is a Rofi-Based RSS Feeder made specifically for YouTube video platform(although support for other platforms might come in the future). It's written purely in bash and allows user to watch or download new videos.
+
+* Usage
+
+While in the project folder:
+#+begin_src bash
+chmod +x YT-Feeder
+#+end_src
+
+Then to actually run the script:
+#+begin_src bash
+rofi -show YT-Feeder -modi "YT-Feeder:Absolute/Path/To/YT-Feeder"
+#+end_src
+
+I highly suggest binding the above command to your keyboard shortcut of choice. After launch you can select your favorite channel from the list, then select video and then finally decide either you want to download or watch it in the best or worst quality.
+
+There's also an option to refresh the RSS feeds at the top of the list.
+
+** Worth noting
+The default directory for downloaded videos is ~/Videos/
+
+* Configuration
+Change ~/.config/yt-feeder/config file to configure this script. If it doesn't exist, create it. The general syntax for this file is:
+#+begin_src
+rss link|channel's name
+rss link|channel's name
+rss link|channel's name
+#+end_src
+
+* Requirements
+Currently only requirements are:
+ - mpv
+ - youtube-dl
+ - rofi
+
+* TODO TODO
+- Add option to change the default directory of downloaded videos
+- Add option to play video in the background
+- Add option to use a custom script on selected video
