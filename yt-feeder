@@ -1,0 +1,57 @@
+#!/bin/bash
+
+MAINFOLDER="${HOME}/.config/yt-feeder"
+CONFIG="${MAINFOLDER}/config"
+CACHE="${HOME}/.cache/yt-feeder"
+CACHE_RSS="${HOME}/.cache/yt-feeder/RSS"
+
+if [ $# -eq 0 ]
+then
+    if [ ! -d $MAINFOLDER ]
+    then
+        mkdir -p $MAINFOLDER
+        touch ${CONFIG}
+    fi
+    if [ ! -f $CONFIG ]
+    then
+        touch $CONFIG
+    fi
+    if [ ! -d $CACHE_RSS ]
+    then
+        mkdir -p $CACHE_RSS
+    fi
+fi
+
+if [ $# -eq 0 ]
+then
+    echo "refresh(it may take a while)"
+    ls -1 $CACHE_RSS | sed "s/^/-> /"
+else
+    if [ x"$@" = x"refresh(it may take a while)" ]
+    then
+        if [ -f $CONFIG ]
+        then
+            LENGTH=$( wc -l $CONFIG )
+            while read p; do
+                FEED=$( echo $p | cut -d '|' -f1 )
+                NAME=$( echo $p | cut -d '|' -f2 )
+                wget $FEED -O "$CACHE_RSS/$NAME"
+            done < $CONFIG
+        fi
+        ls -1 $CACHE_RSS | sed "s/^/-> /"
+    else
+        CHECK=$@
+        if [ x${CHECK:0:2} = x"->" ]
+        then
+            echo ${CHECK:3} > $CACHE/last
+            TAG="media:title"
+            cat "$CACHE_RSS/${CHECK:3}" | grep "<title>" | sed -e :a -e 's/<[^>]*>//g;/</N;//ba' | tail -n +2
+        else
+            TITLE=$( cat $CACHE/last )
+            VIDEO=$( echo $@ )
+            LINK=$( cat "$CACHE_RSS/$TITLE" | grep -A 1 "<title>$VIDEO" | tail -n1 | sed -r 's/^.+href="([^"]+)".+$/\1/')
+            coproc player ( nohup mpv --ytdl-format=worst "$LINK" > /dev/null 2>&1 ) &&
+            rm $CACHE/last
+        fi
+    fi
+fi
