@@ -27,7 +27,7 @@ then
     if [ -f "$CACHE/pid" ]
     then
         PID_n=$( cat "$CACHE/pid" )
-        if kill -0 $PID_n > /dev/null ;
+        if kill -0 $PID_n ;
         then
             echo "stop";
         else
