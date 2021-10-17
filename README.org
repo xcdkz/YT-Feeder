@@ -18,6 +18,7 @@ I highly suggest binding the above command to your keyboard shortcut of choice. 
 - watch(worst) -> watch it in the worst quality
 - play in the background -> play audio from video in the background
 - download -> download the video
+- command -> use your custom command on the video's link
 
 There's also an option to refresh the RSS feeds at the top of the list and there might be an option to stop currently playing audio in the background(only after selecting "play in the background").
 
@@ -31,8 +32,11 @@ rss link|channel's name
 rss link|channel's name
 rss link|channel's name
 DOWNLOAD|~/Videos/folder_for_yt_videos
+COMMAND|my_custom_command
 #+end_src
-If you wish to change the default directory for downloaded videos like above, then the DOWNLOAD line *must* be at the end of the config file.
+DOWNLOAD and COMMAND lines *must* be at the end of the config file if you wish to use them.
+DOWNLOAD specifies the custom directory where you wish to download your videos.
+COMMAND specifies your custom command to use on youtube links.
 
 * Requirements
 Currently only requirements are:
@@ -41,6 +45,5 @@ Currently only requirements are:
  - rofi
 
 * TODO TODO
-- Add option to use a custom script on selected video
 - Add information about the number of new videos
 - Add an option to paste channel link instead of RSS one(?)

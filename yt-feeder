@@ -46,7 +46,10 @@ else
             while read p; do
                 FEED=$( echo $p | cut -d '|' -f1 )
                 NAME=$( echo $p | cut -d '|' -f2 )
-                wget $FEED -O "$CACHE_RSS/$NAME"
+                if [[ ! "$FEED" == "DOWNLOAD" && ! "$FEED" == "COMMAND" ]]
+                then
+                    wget $FEED -O "$CACHE_RSS/$NAME"
+                fi
             done < $CONFIG
         fi
         ls -1 "$CACHE_RSS" | sed "s/^/-> /"
@@ -67,17 +70,31 @@ else
     elif [ x"$@" = x"download" ]
     then
         LINK=$( cat "$CACHE/link" )
-        DOWNLOAD_PATH=$( cat "$CONFIG" | tail -n1 )
-        if [ x"${DOWNLOAD_PATH:0:8}" = x"DOWNLOAD" ]
+        CONF=$( cat "$CONFIG" | tail -n1 )
+        CONF_S=$( cat "$CONFIG" | tail -n2 | head -n1 )
+        if [ x"${CONF:0:8}" = x"DOWNLOAD" ]
         then
-            CHECK=$( echo $DOWNLOAD_PATH | rev )
+            CHECK=$( echo $CONF | rev )
             if [ x"${CHECK:0:1}" = x"/" ]
             then
-                CHECK=$( echo $DOWNLOAD_PATH | cut -d '|' -f2 | rev | cut -c2- | rev )
+                CHECK=$( echo "$CONF" | cut -d '|' -f2 | rev | cut -c2- | rev )
                 coproc player ( nohup youtube-dl -f best -o "$CHECK/%(title)s.%(ext)s" "$LINK" > /dev/null 2>&1 ) &&
                 cd .
             else
-                CHECK=$( echo $DOWNLOAD_PATH | cut -d '|' -f2 )
+                CHECK=$( echo "$CONF" | cut -d '|' -f2 )
+                coproc player ( nohup youtube-dl -f best -o "$CHECK/%(title)s.%(ext)s" "$LINK" > /dev/null 2>&1 ) &&
+                cd .
+            fi
+        elif [ x"${CONF_S:0:8}" = x"DOWNLOAD" ]
+        then
+            CHECK=$( echo "$CONF_S" | rev )
+            if [ x"${CHECK:0:1}" = x"/" ]
+            then
+                CHECK=$( echo "$CONF_S" | cut -d '|' -f2 | rev | cut -c2- | rev )
+                coproc player ( nohup youtube-dl -f best -o "$CHECK/%(title)s.%(ext)s" "$LINK" > /dev/null 2>&1 ) &&
+                cd .
+            else
+                CHECK=$( echo "$CONF_S" | cut -d '|' -f2 )
                 coproc player ( nohup youtube-dl -f best -o "$CHECK/%(title)s.%(ext)s" "$LINK" > /dev/null 2>&1 ) &&
                 cd .
             fi
@@ -92,6 +109,21 @@ else
         coproc player ( nohup mpv --no-video "$LINK" > /dev/null 2>&1 ) &&
         rm "$CACHE/link"
         echo ${player_PID} > "$CACHE/pid"
+    elif [ x"$@" = x"custom" ]
+    then
+        CONF=$( cat "$CONFIG" | tail -n1 )
+        CONF_F=$( cat "$CONFIG" | tail -n2 | head -n1 )
+        if [[ $( echo $CONF | cut -d '|' -f1 ) == "COMMAND" ]]
+        then
+            LINK=$( cat "$CACHE/link" )
+            coproc player ( nohup $( echo $CONF | cut -d '|' -f2 ) "$LINK" > /dev/null 2>&1 ) &&
+            cd .
+        elif [[ $( echo $CONF_F | cut -d '|' -f1 ) == "COMMAND" ]]
+        then
+            LINK=$( cat "$CACHE/link" )
+            coproc player ( nohup $( echo $CONF_F | cut -d '|' -f2 ) "$LINK" > /dev/null 2>&1 ) &&
+            cd .
+        fi
     else
         CHECK=$@
         if [ x${CHECK:0:2} = x"->" ]
@@ -109,6 +141,7 @@ else
             echo "watch(worst)"
             echo "play in the background"
             echo "download"
+            echo "custom"
         fi
     fi
 fi
