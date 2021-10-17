@@ -52,6 +52,16 @@ else
                 fi
             done < $CONFIG
         fi
+        if [ -f "$CACHE/pid" ]
+        then
+            PID_n=$( cat "$CACHE/pid" )
+            if kill -0 $PID_n ;
+            then
+                echo "stop";
+            else
+                rm "$CACHE/pid";
+            fi
+        fi
         ls -1 "$CACHE_RSS" | sed "s/^/-> /"
     elif [ x"$@" = x"stop" ]
     then
