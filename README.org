@@ -46,4 +46,3 @@ Currently only requirements are:
 
 * TODO TODO
 - Add information about the number of new videos
-- Add an option to paste channel link instead of RSS one(?)
