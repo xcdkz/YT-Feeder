@@ -26,7 +26,9 @@ Change ~/.config/yt-feeder/config file to configure this script. If it doesn't e
 rss link|channel's name
 rss link|channel's name
 rss link|channel's name
+DOWNLOAD|~/Videos/folder_for_yt_videos
 #+end_src
+If you wish to change the default directory for downloaded videos like above, then the DOWNLOAD line *must* be at the end of the config file.
 
 * Requirements
 Currently only requirements are:
@@ -35,7 +37,6 @@ Currently only requirements are:
  - rofi
 
 * TODO TODO
-- Add option to change the default directory of downloaded videos
 - Add option to play video in the background
 - Add option to use a custom script on selected video
 - Add information about the number of new videos

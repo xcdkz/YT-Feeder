@@ -53,6 +53,22 @@ else
     elif [ x"$@" = x"download" ]
     then
         LINK=$( cat "$CACHE/link" )
+        DOWNLOAD_PATH=$( cat "$CONFIG" | tail -n1 )
+        if [ x"${DOWNLOAD_PATH:0:8}" = x"DOWNLOAD" ]
+        then
+            CHECK=$( echo $DOWNLOAD_PATH | rev )
+            if [ x"${CHECK:0:1}" = x"/" ]
+            then
+                CHECK=$( echo $DOWNLOAD_PATH | cut -d '|' -f2 | rev | cut -c2- | rev )
+                coproc player ( nohup youtube-dl -f best -o "$CHECK/%(title)s.%(ext)s" "$LINK" > /dev/null 2>&1 ) &&
+                cd .
+            else
+                CHECK=$( echo $DOWNLOAD_PATH | cut -d '|' -f2 )
+                coproc player ( nohup youtube-dl -f best -o "$CHECK/%(title)s.%(ext)s" "$LINK" > /dev/null 2>&1 ) &&
+                cd .
+            fi
+        fi
+
         coproc player ( nohup youtube-dl -f best -o "$HOME/Videos/%(title)s.%(ext)s" "$LINK" > /dev/null 2>&1 ) &&
         rm $CACHE/last
     else
