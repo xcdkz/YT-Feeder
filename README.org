@@ -47,7 +47,7 @@ Currently only requirements are:
 * TODO TODO
 - [] Add information about the number of new videos
 - [] Clean bash code
-- [x] Add option to change the default directory of downloaded videos
-- [x] Add option to play video in the background
-- [x] Add an ability to just use channel's ID in the config file
-- [x] Add option to use a custom script on selected video
+- [X] Add option to change the default directory of downloaded videos
+- [X] Add option to play video in the background
+- [X] Add an ability to just use channel's ID in the config file
+- [X] Add option to use a custom script on selected video
