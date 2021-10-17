@@ -46,7 +46,7 @@ else
             while read p; do
                 FEED=$( echo $p | cut -d '|' -f1 )
                 NAME=$( echo $p | cut -d '|' -f2 )
-                if [[ ! "${FEED:0:19}" == "https://www.youtube" ]]
+                if [[ ! "${FEED:0:19}" == "https://www.youtube" && ! "$FEED" == "DOWNLOAD" && ! "$FEED" == "COMMAND" ]]
                 then
                     FEED=$( echo "https://www.youtube.com/feeds/videos.xml?channel_id=$FEED" )
                 fi
