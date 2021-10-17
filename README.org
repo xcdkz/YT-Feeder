@@ -13,9 +13,13 @@ Then to actually run the script:
 rofi -show YT-Feeder -modi "YT-Feeder:Absolute/Path/To/YT-Feeder"
 #+end_src
 
-I highly suggest binding the above command to your keyboard shortcut of choice. After launch you can select your favorite channel from the list, then select video and then finally decide either you want to download or watch it in the best or worst quality.
+I highly suggest binding the above command to your keyboard shortcut of choice. After launch you can select your favorite channel from the list, then select video and then you have a choice to:
+- watch(best) -> watch it in the best quality
+- watch(worst) -> watch it in the worst quality
+- play in the background -> play audio from video in the background
+- download -> download the video
 
-There's also an option to refresh the RSS feeds at the top of the list.
+There's also an option to refresh the RSS feeds at the top of the list and there might be an option to stop currently playing audio in the background(only after selecting "play in the background").
 
 ** Worth noting
 The default directory for downloaded videos is ~/Videos/
@@ -37,7 +41,6 @@ Currently only requirements are:
  - rofi
 
 * TODO TODO
-- Add option to play video in the background
 - Add option to use a custom script on selected video
 - Add information about the number of new videos
 - Add an option to paste channel link instead of RSS one(?)

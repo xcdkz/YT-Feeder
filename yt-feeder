@@ -24,6 +24,16 @@ fi
 
 if [ $# -eq 0 ]
 then
+    if [ -f "$CACHE/pid" ]
+    then
+        PID_n=$( cat "$CACHE/pid" )
+        if kill -0 $PID_n > /dev/null ;
+        then
+            echo "stop";
+        else
+            rm "$CACHE/pid";
+        fi
+    fi
     echo "refresh(it may take a while)"
     ls -1 "$CACHE_RSS" | sed "s/^/-> /"
 else
@@ -40,6 +50,10 @@ else
             done < $CONFIG
         fi
         ls -1 "$CACHE_RSS" | sed "s/^/-> /"
+    elif [ x"$@" = x"stop" ]
+    then
+        PID_n=$( cat "$CACHE/pid" )
+        kill $PID_n
     elif [ x"$@" = x"watch(best)" ]
     then
         LINK=$( cat "$CACHE/link" )
@@ -67,10 +81,17 @@ else
                 coproc player ( nohup youtube-dl -f best -o "$CHECK/%(title)s.%(ext)s" "$LINK" > /dev/null 2>&1 ) &&
                 cd .
             fi
+        else
+            coproc player ( nohup youtube-dl -f best -o "$HOME/Videos/%(title)s.%(ext)s" "$LINK" > /dev/null 2>&1 ) &&
+            cd .
         fi
-
-        coproc player ( nohup youtube-dl -f best -o "$HOME/Videos/%(title)s.%(ext)s" "$LINK" > /dev/null 2>&1 ) &&
         rm $CACHE/last
+    elif [ x"$@" = x"play in the background" ]
+    then
+        LINK=$( cat "$CACHE/link" )
+        coproc player ( nohup mpv --no-video "$LINK" > /dev/null 2>&1 ) &&
+        rm "$CACHE/link"
+        echo ${player_PID} > "$CACHE/pid"
     else
         CHECK=$@
         if [ x${CHECK:0:2} = x"->" ]
@@ -86,6 +107,7 @@ else
             echo $LINK > "$CACHE/link"
             echo "watch(best)"
             echo "watch(worst)"
+            echo "play in the background"
             echo "download"
         fi
     fi
