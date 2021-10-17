@@ -28,9 +28,9 @@ The default directory for downloaded videos is ~/Videos/
 * Configuration
 Change ~/.config/yt-feeder/config file to configure this script. If it doesn't exist, create it. The general syntax for this file is:
 #+begin_src
-rss link|channel's name
-rss link|channel's name
-rss link|channel's name
+rss link or channel's ID|channel's name
+rss link or channel's ID|channel's name
+rss link or channel's ID|channel's name
 DOWNLOAD|~/Videos/folder_for_yt_videos
 COMMAND|my_custom_command
 #+end_src
