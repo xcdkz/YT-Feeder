@@ -1,5 +1,5 @@
 * Introduction
-[[https://youtu.be/GoCMYeCHMbQ][YT-Feeder]] is a Rofi-Based RSS Reader made specifically for YouTube video platform(although support for other platforms might come in the future). It's written purely in bash and allows user to watch or download new videos.
+[[https://youtu.be/GoCMYeCHMbQ][YT-Feeder]] is a Rofi-Based RSS Reader made specifically for YouTube video platform. It's written purely in bash and allows user to watch or download new videos.
 
 * Usage
 
