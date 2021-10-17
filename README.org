@@ -39,3 +39,4 @@ Currently only requirements are:
 - Add option to play video in the background
 - Add option to use a custom script on selected video
 - Add information about the number of new videos
+- Add an option to paste channel link instead of RSS one(?)
