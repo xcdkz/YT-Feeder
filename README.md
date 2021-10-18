@@ -1,27 +1,27 @@
-- [IMPORTANT](#orgd2f755e)
-- [Introduction](#org7f4f0f9)
-- [Usage](#org476a7d1)
-  - [Worth noting](#orgb813afa)
-- [Configuration](#orgef15e09)
-- [Requirements](#org5f67b2d)
-- [TODO](#org2753d50)
+- [IMPORTANT](#org163f615)
+- [Introduction](#org09f9f20)
+- [Usage](#org91900ea)
+  - [Worth noting](#org2f7b16a)
+- [Configuration](#org69ba76a)
+- [Requirements](#org80741a8)
+- [TODO](#orgceea4b5)
 
 
-<a id="orgd2f755e"></a>
+<a id="org163f615"></a>
 
 # IMPORTANT
 
-There is an issue with bots &ldquo;advertising&rdquo; this project to random people on Discord, asking for stars and offering free Discord Nitro in exchange. I don&rsquo;t know who these people are and why they are doing that, but if you expect any kind of reward for giving a star my project, please don&rsquo;t do it. Having said that, I hope you enjoy my using my script 🙂
+There is an issue with bots &ldquo;advertising&rdquo; this project to random people on Discord, asking for stars and offering free Discord Nitro in exchange. I don&rsquo;t know who these people are and why they are doing that, but if you expect any kind of reward for giving a star my project, please don&rsquo;t do it. Having said that, I hope you enjoy using my script 🙂
 
 
-<a id="org7f4f0f9"></a>
+<a id="org09f9f20"></a>
 
 # Introduction
 
 [YT-Feeder](https://youtu.be/GoCMYeCHMbQ) is a Rofi-Based RSS Reader made specifically for YouTube video platform. It&rsquo;s written purely in bash and allows user to watch or download new videos.
 
 
-<a id="org476a7d1"></a>
+<a id="org91900ea"></a>
 
 # Usage
 
@@ -48,14 +48,14 @@ I highly suggest binding the above command to your keyboard shortcut of choice. 
 There&rsquo;s also an option to refresh the RSS feeds at the top of the list and there might be an option to stop currently playing audio in the background(only after selecting &ldquo;play in the background&rdquo;).
 
 
-<a id="orgb813afa"></a>
+<a id="org2f7b16a"></a>
 
 ## Worth noting
 
 The default directory for downloaded videos is ~/Videos/
 
 
-<a id="orgef15e09"></a>
+<a id="org69ba76a"></a>
 
 # Configuration
 
@@ -72,7 +72,7 @@ COMMAND|my_custom_command
 DOWNLOAD and COMMAND lines **must** be at the end of the config file if you wish to use them. DOWNLOAD specifies the custom directory where you wish to download your videos. COMMAND specifies your custom command to use on youtube links.
 
 
-<a id="org5f67b2d"></a>
+<a id="org80741a8"></a>
 
 # Requirements
 
@@ -83,7 +83,7 @@ Currently only requirements are:
 -   rofi
 
 
-<a id="org2753d50"></a>
+<a id="orgceea4b5"></a>
 
 # TODO
 
