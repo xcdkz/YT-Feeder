@@ -11,7 +11,7 @@
 
 # IMPORTANT
 
-There is an issue with bots &ldquo;advertising&rdquo; this project to random people on Discord, asking for stars and offering free Discord Nitro in exchange. I don&rsquo;t know who these people are and why they are doing that, but if you expect any kind of reward for starring my project, please don&rsquo;t do it. Having said that, I hope you enjoy my using my script 🙂
+There is an issue with bots &ldquo;advertising&rdquo; this project to random people on Discord, asking for stars and offering free Discord Nitro in exchange. I don&rsquo;t know who these people are and why they are doing that, but if you expect any kind of reward for starring my project, please don&rsquo;t do it. Having said that, I hope you enjoy using my script 🙂
 
 
 <a id="orgb44430d"></a>
