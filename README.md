@@ -1,29 +1,29 @@
-- [IMPORTANT](#org80fa9a3)
-- [Introduction](#org4020876)
-- [Usage](#orgb59721c)
-  - [Worth noting](#orgccc62f2)
-- [Configuration](#org31acf81)
-- [Requirements](#org2dba0af)
-- [TODO](#org520b3df)
+- [IMPORTANT](#org284d7a3)
+- [Introduction](#org31eadec)
+- [Usage](#org6811b17)
+  - [Worth noting](#org108c973)
+- [Configuration](#org16b03ba)
+- [Requirements](#org4d0658f)
+- [TODO](#org1846d11)
 
 
-<a id="org80fa9a3"></a>
+<a id="org284d7a3"></a>
 
 # IMPORTANT
 
 There is an issue with bots &ldquo;advertising&rdquo; this project to random people on Discord, asking for stars and offering free Discord Nitro in exchange. I don&rsquo;t know who these people are and why they are doing that, but if you expect any kind of reward for giving a star my project, please don&rsquo;t do it. Having said that, I hope you enjoy using my script 🙂
 
 
-<a id="org4020876"></a>
+<a id="org31eadec"></a>
 
 # Introduction
 
-**[YT-Feeder Example Video](https://youtu.be/GoCMYeCHMbQ)**
+**[YT-Feeder Example Video](https://youtu.be/7dMLBVUZDJs)**
 
 YT-Feeder is a Rofi-Based RSS Reader made specifically for YouTube video platform. It&rsquo;s written purely in bash and allows user to watch or download new videos.
 
 
-<a id="orgb59721c"></a>
+<a id="org6811b17"></a>
 
 # Usage
 
@@ -50,14 +50,14 @@ I highly suggest binding the above command to your keyboard shortcut of choice. 
 There&rsquo;s also an option to refresh the RSS feeds at the top of the list and there might be an option to stop currently playing audio in the background(only after selecting &ldquo;play in the background&rdquo;).
 
 
-<a id="orgccc62f2"></a>
+<a id="org108c973"></a>
 
 ## Worth noting
 
 The default directory for downloaded videos is ~/Videos/
 
 
-<a id="org31acf81"></a>
+<a id="org16b03ba"></a>
 
 # Configuration
 
@@ -74,7 +74,7 @@ COMMAND|my_custom_command
 DOWNLOAD and COMMAND lines **must** be at the end of the config file if you wish to use them. DOWNLOAD specifies the custom directory where you wish to download your videos. COMMAND specifies your custom command to use on youtube links.
 
 
-<a id="org2dba0af"></a>
+<a id="org4d0658f"></a>
 
 # Requirements
 
@@ -85,7 +85,7 @@ Currently only requirements are:
 -   rofi
 
 
-<a id="org520b3df"></a>
+<a id="org1846d11"></a>
 
 # TODO
 
