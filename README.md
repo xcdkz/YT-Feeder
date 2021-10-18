@@ -1,19 +1,19 @@
-- [Introduction](#org611dedf)
-- [Usage](#org2bb5591)
-  - [Worth noting](#org0134b78)
-- [Configuration](#org66dade7)
-- [Requirements](#org6bd3f00)
-- [TODO](#org7960bca)
+- [Introduction](#orgcedc018)
+- [Usage](#org981ccd6)
+  - [Worth noting](#org9dd4e42)
+- [Configuration](#orgf7558dd)
+- [Requirements](#org37de662)
+- [TODO](#org8428264)
 
 
-<a id="org611dedf"></a>
+<a id="orgcedc018"></a>
 
 # Introduction
 
 [YT-Feeder](https://youtu.be/GoCMYeCHMbQ) is a Rofi-Based RSS Reader made specifically for YouTube video platform. It&rsquo;s written purely in bash and allows user to watch or download new videos.
 
 
-<a id="org2bb5591"></a>
+<a id="org981ccd6"></a>
 
 # Usage
 
@@ -40,14 +40,14 @@ I highly suggest binding the above command to your keyboard shortcut of choice. 
 There&rsquo;s also an option to refresh the RSS feeds at the top of the list and there might be an option to stop currently playing audio in the background(only after selecting &ldquo;play in the background&rdquo;).
 
 
-<a id="org0134b78"></a>
+<a id="org9dd4e42"></a>
 
 ## Worth noting
 
 The default directory for downloaded videos is ~/Videos/
 
 
-<a id="org66dade7"></a>
+<a id="orgf7558dd"></a>
 
 # Configuration
 
@@ -64,7 +64,7 @@ COMMAND|my_custom_command
 DOWNLOAD and COMMAND lines **must** be at the end of the config file if you wish to use them. DOWNLOAD specifies the custom directory where you wish to download your videos. COMMAND specifies your custom command to use on youtube links.
 
 
-<a id="org6bd3f00"></a>
+<a id="org37de662"></a>
 
 # Requirements
 
@@ -75,9 +75,9 @@ Currently only requirements are:
 -   rofi
 
 
-<a id="org7960bca"></a>
+<a id="org8428264"></a>
 
-# TODO TODO
+# TODO
 
 -   [ ] Add information about the number of new videos
 -   [X] Clean bash code
