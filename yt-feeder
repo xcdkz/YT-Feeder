@@ -57,7 +57,7 @@ check_pid () {
                 rm "$CACHE/pid";
             fi
         else
-            echo "ERROR: Wrong number of arguments passed to the check_pid () function"
+            echo "ERROR: Wrong number of arguments passed to the custom () function"
             exit 1
         fi
     fi
@@ -159,10 +159,10 @@ else
         then
             echo ${CHECK:3} > "$CACHE/last"
             TAG="media:title"
-            cat "$CACHE_RSS/${CHECK:3}" | grep "<title>" | sed -e :a -e 's/<[^>]*>//g;/</N;//ba' | tail -n +2
+            cat "$CACHE_RSS/${CHECK:3}" | grep "<title>" | sed -e :a -e 's/<[^>]*>//g;/</N;//ba' | tail -n +2 | sed 's/\&quot;/\"/g' | sed 's/\&amp;/\&/g'
         else
             TITLE=$( cat $CACHE/last )
-            VIDEO=$( echo $@ )
+            VIDEO=$( echo $@ | sed 's/\"/\&quot;/g' | sed 's/\&/\&amp;/g' )
             LINK=$( cat "$CACHE_RSS/$TITLE" | grep -A 1 "<title>$VIDEO" | tail -n1 | sed -r 's/^.+href="([^"]+)".+$/\1/')
             rm "$CACHE/last"
             echo $LINK > "$CACHE/link"
