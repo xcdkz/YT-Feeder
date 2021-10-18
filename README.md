@@ -1,19 +1,19 @@
-- [Introduction](#org47f1428)
-- [Usage](#orgd02a668)
-  - [Worth noting](#orgca299d6)
-- [Configuration](#orga4dd2ee)
-- [Requirements](#orgd1946e3)
-- [TODO](#org8027590)
+- [Introduction](#orgb89d11d)
+- [Usage](#org90dabd0)
+  - [Worth noting](#org8967f84)
+- [Configuration](#orgaf83400)
+- [Requirements](#orgeef1516)
+- [TODO](#org6527a37)
 
 
-<a id="org47f1428"></a>
+<a id="orgb89d11d"></a>
 
 # Introduction
 
 [YT-Feeder](https://youtu.be/GoCMYeCHMbQ) is a Rofi-Based RSS Reader made specifically for YouTube video platform. It&rsquo;s written purely in bash and allows user to watch or download new videos.
 
 
-<a id="orgd02a668"></a>
+<a id="org90dabd0"></a>
 
 # Usage
 
@@ -40,14 +40,14 @@ I highly suggest binding the above command to your keyboard shortcut of choice. 
 There&rsquo;s also an option to refresh the RSS feeds at the top of the list and there might be an option to stop currently playing audio in the background(only after selecting &ldquo;play in the background&rdquo;).
 
 
-<a id="orgca299d6"></a>
+<a id="org8967f84"></a>
 
 ## Worth noting
 
 The default directory for downloaded videos is ~/Videos/
 
 
-<a id="orga4dd2ee"></a>
+<a id="orgaf83400"></a>
 
 # Configuration
 
@@ -64,7 +64,7 @@ COMMAND|my_custom_command
 DOWNLOAD and COMMAND lines **must** be at the end of the config file if you wish to use them. DOWNLOAD specifies the custom directory where you wish to download your videos. COMMAND specifies your custom command to use on youtube links.
 
 
-<a id="orgd1946e3"></a>
+<a id="orgeef1516"></a>
 
 # Requirements
 
@@ -75,12 +75,12 @@ Currently only requirements are:
 -   rofi
 
 
-<a id="org8027590"></a>
+<a id="org6527a37"></a>
 
 # TODO TODO
 
--   [] Add information about the number of new videos
--   [] Clean bash code
+-   [ ] Add information about the number of new videos
+-   [ ] Clean bash code
 -   [X] Add option to change the default directory of downloaded videos
 -   [X] Add option to play video in the background
 -   [X] Add an ability to just use channel&rsquo;s ID in the config file
