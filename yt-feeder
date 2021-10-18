@@ -56,6 +56,9 @@ check_pid () {
             else
                 rm "$CACHE/pid";
             fi
+        else
+            echo "ERROR: Wrong number of arguments passed to the check_pid () function"
+            exit 1
         fi
     fi
 }
