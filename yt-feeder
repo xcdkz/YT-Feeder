@@ -162,7 +162,7 @@ else
             cat "$CACHE_RSS/${CHECK:3}" | grep "<title>" | sed -e :a -e 's/<[^>]*>//g;/</N;//ba' | tail -n +2 | sed 's/\&quot;/\"/g' | sed 's/\&amp;/\&/g'
         else
             TITLE=$( cat $CACHE/last )
-            VIDEO=$( echo $@ | sed 's/\"/\&quot;/g' | sed 's/\&/\&amp;/g' )
+            VIDEO=$( echo $@ | sed 's/\"/\quot;/g' | sed 's/\&/\&amp;/g' | sed 's/quot;/\&quot;/g' )
             LINK=$( cat "$CACHE_RSS/$TITLE" | grep -A 1 "<title>$VIDEO" | tail -n1 | sed -r 's/^.+href="([^"]+)".+$/\1/')
             rm "$CACHE/last"
             echo $LINK > "$CACHE/link"
