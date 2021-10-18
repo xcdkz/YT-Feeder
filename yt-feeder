@@ -5,6 +5,61 @@ CONFIG="${MAINFOLDER}/config"
 CACHE="${HOME}/.cache/yt-feeder"
 CACHE_RSS="${HOME}/.cache/yt-feeder/RSS"
 
+download () {
+    if [[ $# == 1 ]]
+    then
+        coproc player ( nohup youtube-dl -f best "$1" > /dev/null 2>&1 ) &&
+        cd .
+    elif [[ $# == 2 ]]
+    then
+        CHECK=$( echo "$1" | cut -d '|' -f2 )
+        REVERSE=$( echo "$CHECK" | rev )
+        if [[ ${REVERSE:0:1} == "/" ]]
+        then
+            coproc player ( nohup youtube-dl -f best -o "$CHECK%(title)s.%(ext)s" "$2" > /dev/null 2>&1 ) &&
+            cd .
+        else
+            coproc player ( nohup youtube-dl -f best -o "$CHECK/%(title)s.%(ext)s" "$2" > /dev/null 2>&1 ) &&
+            cd .
+        fi
+    else
+        echo "ERROR: Wrong number of arguments passed to the download () function"
+        exit 1
+    fi
+}
+
+custom () {
+    if [[ $# == 1 ]]
+    then
+        LINK=$( cat "$CACHE/link" )
+        coproc player ( nohup $( echo $1 | cut -d '|' -f2 ) "$LINK" > /dev/null 2>&1 ) &&
+        cd .
+    else
+        echo "ERROR: Wrong number of arguments passed to the custom () function"
+        exit 1
+    fi
+}
+
+check_pid () {
+    if [ -f "$CACHE/pid" ]
+    then
+        if [[ $# == 0 ]]
+        then
+            PID_n=$( cat "$CACHE/pid" )
+            kill $PID_n
+        elif [[ $# == 1 ]]
+        then
+            PID_n=$( cat "$CACHE/pid" )
+            if kill -0 $PID_n ;
+            then
+                echo "$1";
+            else
+                rm "$CACHE/pid";
+            fi
+        fi
+    fi
+}
+
 if [ $# -eq 0 ]
 then
     if [ ! -d "$MAINFOLDER" ]
@@ -24,16 +79,7 @@ fi
 
 if [ $# -eq 0 ]
 then
-    if [ -f "$CACHE/pid" ]
-    then
-        PID_n=$( cat "$CACHE/pid" )
-        if kill -0 $PID_n ;
-        then
-            echo "stop";
-        else
-            rm "$CACHE/pid";
-        fi
-    fi
+    check_pid "stop"
     echo "refresh(it may take a while)"
     ls -1 "$CACHE_RSS" | sed "s/^/-> /"
 else
@@ -56,21 +102,11 @@ else
                 fi
             done < $CONFIG
         fi
-        if [ -f "$CACHE/pid" ]
-        then
-            PID_n=$( cat "$CACHE/pid" )
-            if kill -0 $PID_n ;
-            then
-                echo "stop";
-            else
-                rm "$CACHE/pid";
-            fi
-        fi
+        check_pid "stop"
         ls -1 "$CACHE_RSS" | sed "s/^/-> /"
     elif [ x"$@" = x"stop" ]
     then
-        PID_n=$( cat "$CACHE/pid" )
-        kill $PID_n
+        check_pid
     elif [ x"$@" = x"watch(best)" ]
     then
         LINK=$( cat "$CACHE/link" )
@@ -88,42 +124,17 @@ else
         CONF_S=$( cat "$CONFIG" | tail -n2 | head -n1 )
         if [ x"${CONF:0:8}" = x"DOWNLOAD" ]
         then
-            CHECK=$( echo $CONF | rev )
-            if [ x"${CHECK:0:1}" = x"/" ]
-            then
-                CHECK=$( echo "$CONF" | cut -d '|' -f2 | rev | cut -c2- | rev )
-                coproc player ( nohup youtube-dl -f best -o "$CHECK/%(title)s.%(ext)s" "$LINK" > /dev/null 2>&1 ) &&
-                cd .
-            else
-                CHECK=$( echo "$CONF" | cut -d '|' -f2 )
-                coproc player ( nohup youtube-dl -f best -o "$CHECK/%(title)s.%(ext)s" "$LINK" > /dev/null 2>&1 ) &&
-                cd .
-            fi
+            download "$CONF" "$LINK"
         elif [ x"${CONF_S:0:8}" = x"DOWNLOAD" ]
         then
-            CHECK=$( echo "$CONF_S" | rev )
-            if [ x"${CHECK:0:1}" = x"/" ]
-            then
-                CHECK=$( echo "$CONF_S" | cut -d '|' -f2 | rev | cut -c2- | rev )
-                coproc player ( nohup youtube-dl -f best -o "$CHECK/%(title)s.%(ext)s" "$LINK" > /dev/null 2>&1 ) &&
-                cd .
-            else
-                CHECK=$( echo "$CONF_S" | cut -d '|' -f2 )
-                coproc player ( nohup youtube-dl -f best -o "$CHECK/%(title)s.%(ext)s" "$LINK" > /dev/null 2>&1 ) &&
-                cd .
-            fi
+            download "$CONF_S" "$LINK"
         else
-            coproc player ( nohup youtube-dl -f best -o "$HOME/Videos/%(title)s.%(ext)s" "$LINK" > /dev/null 2>&1 ) &&
-            cd .
+            download "$LINK"
         fi
         rm $CACHE/last
     elif [ x"$@" = x"play in the background" ]
     then
-        if [ -f "$CACHE/pid" ]
-        then
-            PID_n=$( cat "$CACHE/pid" )
-            kill $PID_n
-        fi
+        check_pid
         LINK=$( cat "$CACHE/link" )
         coproc player ( nohup mpv --no-video "$LINK" > /dev/null 2>&1 ) &&
         rm "$CACHE/link"
@@ -131,17 +142,13 @@ else
     elif [ x"$@" = x"custom" ]
     then
         CONF=$( cat "$CONFIG" | tail -n1 )
-        CONF_F=$( cat "$CONFIG" | tail -n2 | head -n1 )
+        CONF_S=$( cat "$CONFIG" | tail -n2 | head -n1 )
         if [[ $( echo $CONF | cut -d '|' -f1 ) == "COMMAND" ]]
         then
-            LINK=$( cat "$CACHE/link" )
-            coproc player ( nohup $( echo $CONF | cut -d '|' -f2 ) "$LINK" > /dev/null 2>&1 ) &&
-            cd .
+            custom "$CONF"
         elif [[ $( echo $CONF_F | cut -d '|' -f1 ) == "COMMAND" ]]
         then
-            LINK=$( cat "$CACHE/link" )
-            coproc player ( nohup $( echo $CONF_F | cut -d '|' -f2 ) "$LINK" > /dev/null 2>&1 ) &&
-            cd .
+            custom "$CONF_S"
         fi
     else
         CHECK=$@

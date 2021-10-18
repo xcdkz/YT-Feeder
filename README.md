@@ -1,19 +1,19 @@
-- [Introduction](#org3f19d07)
-- [Usage](#org43cc31e)
-  - [Worth noting](#orgfa874f5)
-- [Configuration](#orgf7cd1ff)
-- [Requirements](#org40ac1f3)
-- [TODO](#org29a8216)
+- [Introduction](#orga6986bf)
+- [Usage](#org9c0061d)
+  - [Worth noting](#org4a83e5c)
+- [Configuration](#org313a514)
+- [Requirements](#org38024cb)
+- [TODO](#orge884336)
 
 
-<a id="org3f19d07"></a>
+<a id="orga6986bf"></a>
 
 # Introduction
 
 [YT-Feeder](https://youtu.be/GoCMYeCHMbQ) is a Rofi-Based RSS Reader made specifically for YouTube video platform. It&rsquo;s written purely in bash and allows user to watch or download new videos.
 
 
-<a id="org43cc31e"></a>
+<a id="org9c0061d"></a>
 
 # Usage
 
@@ -40,14 +40,14 @@ I highly suggest binding the above command to your keyboard shortcut of choice. 
 There&rsquo;s also an option to refresh the RSS feeds at the top of the list and there might be an option to stop currently playing audio in the background(only after selecting &ldquo;play in the background&rdquo;).
 
 
-<a id="orgfa874f5"></a>
+<a id="org4a83e5c"></a>
 
 ## Worth noting
 
 The default directory for downloaded videos is ~/Videos/
 
 
-<a id="orgf7cd1ff"></a>
+<a id="org313a514"></a>
 
 # Configuration
 
@@ -64,7 +64,7 @@ COMMAND|my_custom_command
 DOWNLOAD and COMMAND lines **must** be at the end of the config file if you wish to use them. DOWNLOAD specifies the custom directory where you wish to download your videos. COMMAND specifies your custom command to use on youtube links.
 
 
-<a id="org40ac1f3"></a>
+<a id="org38024cb"></a>
 
 # Requirements
 
@@ -75,12 +75,12 @@ Currently only requirements are:
 -   rofi
 
 
-<a id="org29a8216"></a>
+<a id="orge884336"></a>
 
-# TODO
+# TODO TODO
 
--   [ ] Add information about the number of new videos
--   [ ] Clean bash code
+-   [] Add information about the number of new videos
+-   [X] Clean bash code
 -   [X] Add option to change the default directory of downloaded videos
 -   [X] Add option to play video in the background
 -   [X] Add an ability to just use channel&rsquo;s ID in the config file
