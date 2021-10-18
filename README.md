@@ -1,19 +1,27 @@
-- [Introduction](#orgcedc018)
-- [Usage](#org981ccd6)
-  - [Worth noting](#org9dd4e42)
-- [Configuration](#orgf7558dd)
-- [Requirements](#org37de662)
-- [TODO](#org8428264)
+- [IMPORTANT](#org2e0089f)
+- [Introduction](#orgb44430d)
+- [Usage](#org1c4a6d5)
+  - [Worth noting](#org4a7c8ef)
+- [Configuration](#orgd0bd3ca)
+- [Requirements](#orgb2809ef)
+- [TODO](#orgc55cbc6)
 
 
-<a id="orgcedc018"></a>
+<a id="org2e0089f"></a>
+
+# IMPORTANT
+
+There is an issue with bots &ldquo;advertising&rdquo; this project to random people on Discord, asking for stars and offering free Discord Nitro in exchange. I don&rsquo;t know who these people are and why they are doing that, but if you expect any kind of reward for starring my project, please don&rsquo;t do it. Having said that, I hope you enjoy my using my script 🙂
+
+
+<a id="orgb44430d"></a>
 
 # Introduction
 
 [YT-Feeder](https://youtu.be/GoCMYeCHMbQ) is a Rofi-Based RSS Reader made specifically for YouTube video platform. It&rsquo;s written purely in bash and allows user to watch or download new videos.
 
 
-<a id="org981ccd6"></a>
+<a id="org1c4a6d5"></a>
 
 # Usage
 
@@ -40,14 +48,14 @@ I highly suggest binding the above command to your keyboard shortcut of choice. 
 There&rsquo;s also an option to refresh the RSS feeds at the top of the list and there might be an option to stop currently playing audio in the background(only after selecting &ldquo;play in the background&rdquo;).
 
 
-<a id="org9dd4e42"></a>
+<a id="org4a7c8ef"></a>
 
 ## Worth noting
 
 The default directory for downloaded videos is ~/Videos/
 
 
-<a id="orgf7558dd"></a>
+<a id="orgd0bd3ca"></a>
 
 # Configuration
 
@@ -64,7 +72,7 @@ COMMAND|my_custom_command
 DOWNLOAD and COMMAND lines **must** be at the end of the config file if you wish to use them. DOWNLOAD specifies the custom directory where you wish to download your videos. COMMAND specifies your custom command to use on youtube links.
 
 
-<a id="org37de662"></a>
+<a id="orgb2809ef"></a>
 
 # Requirements
 
@@ -75,7 +83,7 @@ Currently only requirements are:
 -   rofi
 
 
-<a id="org8428264"></a>
+<a id="orgc55cbc6"></a>
 
 # TODO
 
