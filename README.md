@@ -13,11 +13,9 @@
 
 **[YT-Feeder Example Video](https://youtu.be/V2Oi5kPDTj4 )**
 
-![img](./src/yt-feeder-1.png)
-
-![img](./src/yt-feeder-2.png)
-
-![img](./src/yt-feeder-3.png)
+<img src="./src/yt-feeder-1.png" width="600">
+<img src="./src/yt-feeder-2.png" width="600">
+<img src="./src/yt-feeder-3.png" width="600">
 
 
 <a id="org4bb8cd2"></a>
