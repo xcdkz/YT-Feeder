@@ -1,13 +1,13 @@
-- [IMPORTANT](#orgfd3ad57)
-- [Introduction](#orge50b54b)
-- [Usage](#org11f935e)
-  - [Worth noting](#orgc263b63)
-- [Configuration](#orgc16e8ec)
-- [Requirements](#orgfded8c5)
-- [TODO](#orgaeb4805)
+- [IMPORTANT](#org24a3efb)
+- [Introduction](#orgd80fe05)
+- [Usage](#orgf01b8d1)
+  - [Worth noting](#orgb34af34)
+- [Configuration](#org225a399)
+- [Requirements](#org20d8c62)
+- [TODO](#orgcc8d23e)
 
 
-<a id="orgfd3ad57"></a>
+<a id="org24a3efb"></a>
 
 # IMPORTANT
 
@@ -15,7 +15,7 @@
 2.  There is an issue with bots &ldquo;advertising&rdquo; this project to random people on Discord, asking for stars and offering free Discord Nitro in exchange. I don&rsquo;t know who these people are and why they are doing that, but if you expect any kind of reward for giving a star my project, please don&rsquo;t do it. Having said that, I hope you enjoy using my script 🙂
 
 
-<a id="orge50b54b"></a>
+<a id="orgd80fe05"></a>
 
 # Introduction
 
@@ -24,7 +24,7 @@
 YT-Feeder is a Rofi-Based RSS Reader made specifically for YouTube video platform. It&rsquo;s written purely in bash and allows user to watch or download new videos.
 
 
-<a id="org11f935e"></a>
+<a id="orgf01b8d1"></a>
 
 # Usage
 
@@ -52,14 +52,14 @@ I highly suggest binding the above command to your keyboard shortcut of choice. 
 There&rsquo;s also an option to refresh the RSS feeds at the top of the list and there might be an option to stop currently playing audio in the background(only after selecting &ldquo;play in the background&rdquo;).
 
 
-<a id="orgc263b63"></a>
+<a id="orgb34af34"></a>
 
 ## Worth noting
 
 The default directory for downloaded videos is ~/Videos/ and the default directory for downloaded audio is ~/Music/.
 
 
-<a id="orgc16e8ec"></a>
+<a id="org225a399"></a>
 
 # Configuration
 
@@ -82,7 +82,7 @@ Comments must be placed on separate lines, every line starting with &ldquo;//&rd
 -   `DOWNLOAD_AUDIO` specifies the custom directory where you wish to download your audio.
 
 
-<a id="orgfded8c5"></a>
+<a id="org20d8c62"></a>
 
 # Requirements
 
@@ -93,11 +93,11 @@ Currently only requirements are:
 -   rofi
 
 
-<a id="orgaeb4805"></a>
+<a id="orgcc8d23e"></a>
 
 # TODO
 
--   [ ] Add information about the number of new videos
+-   [X] Add information about the number of new videos
 -   [X] Auto-detect Channel&rsquo;s name from RSS Feed
 -   [X] Clean bash code
 -   [X] Add option to change the default directory of downloaded videos
