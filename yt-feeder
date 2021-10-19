@@ -131,6 +131,15 @@ else
                    echo "$q" >> "$CACHE_WATCHED/$p"
                 fi
             done < "$CACHE/tmp_titles"
+            if [[ $( cat "$CACHE_WATCHED/$p" | wc -l ) -gt 15 ]]
+            then
+                COUNT=$( cat "$CACHE_WATCHED/$p" | wc -l )
+                RES=$(($COUNT-14))
+                RES="-n+$RES"
+                cat "$CACHE_WATCHED/$p" | tail "$RES" > "tmp_$p"
+                rm "$CACHE_WATCHED/$p"
+                mv "tmp_$p" "$CACHE_WATCHED/$p"
+            fi
             echo "($COUNTER new videos)|-> $p"
         done < "$CACHE/tmp"
     elif [ x"$@" = x"stop" ]
