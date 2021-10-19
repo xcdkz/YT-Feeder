@@ -110,4 +110,4 @@ Currently only requirements are:
 
 **[YT-Feeder Example Video](https://youtu.be/V2Oi5kPDTj4 )**
 
-![img](./src/yt-feaeder-1.png) ![img](./src/yt-feeder-2.png) ![img](./src/yt-feeder-3.png)
+![img](./src/yt-feeder-1.png) ![img](./src/yt-feeder-2.png) ![img](./src/yt-feeder-3.png)
