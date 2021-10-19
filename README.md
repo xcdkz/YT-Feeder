@@ -1,21 +1,20 @@
-- [IMPORTANT](#org24a3efb)
-- [Introduction](#orgd80fe05)
-- [Usage](#orgf01b8d1)
-  - [Worth noting](#orgb34af34)
-- [Configuration](#org225a399)
-- [Requirements](#org20d8c62)
-- [TODO](#orgcc8d23e)
+- [IMPORTANT](#orgafee469)
+- [Introduction](#org1d0dec8)
+- [Usage](#orgae15c04)
+  - [Worth noting](#org5e1a62f)
+- [Configuration](#org6952fe2)
+- [Requirements](#org4123e87)
+- [TODO](#org2dd758a)
 
 
-<a id="org24a3efb"></a>
+<a id="orgafee469"></a>
 
 # IMPORTANT
 
-1.  **There was an important change to the config file syntax, check it before filling an issue. It was required to make sure some edge cases works and it makes it easier to manage configuration file. There probably won&rsquo;t be another syntax change, this one can be considered final**
-2.  There is an issue with bots &ldquo;advertising&rdquo; this project to random people on Discord, asking for stars and offering free Discord Nitro in exchange. I don&rsquo;t know who these people are and why they are doing that, but if you expect any kind of reward for giving a star my project, please don&rsquo;t do it. Having said that, I hope you enjoy using my script 🙂
+**There was an important change to the config file syntax, check it before filling an issue. It was required to make sure some edge cases works and it makes it easier to manage configuration file. There probably won&rsquo;t be another syntax change, this one can be considered final**
 
 
-<a id="orgd80fe05"></a>
+<a id="org1d0dec8"></a>
 
 # Introduction
 
@@ -24,7 +23,7 @@
 YT-Feeder is a Rofi-Based RSS Reader made specifically for YouTube video platform. It&rsquo;s written purely in bash and allows user to watch or download new videos.
 
 
-<a id="orgf01b8d1"></a>
+<a id="orgae15c04"></a>
 
 # Usage
 
@@ -52,14 +51,14 @@ I highly suggest binding the above command to your keyboard shortcut of choice. 
 There&rsquo;s also an option to refresh the RSS feeds at the top of the list and there might be an option to stop currently playing audio in the background(only after selecting &ldquo;play in the background&rdquo;).
 
 
-<a id="orgb34af34"></a>
+<a id="org5e1a62f"></a>
 
 ## Worth noting
 
 The default directory for downloaded videos is ~/Videos/ and the default directory for downloaded audio is ~/Music/.
 
 
-<a id="org225a399"></a>
+<a id="org6952fe2"></a>
 
 # Configuration
 
@@ -82,7 +81,7 @@ Comments must be placed on separate lines, every line starting with &ldquo;//&rd
 -   `DOWNLOAD_AUDIO` specifies the custom directory where you wish to download your audio.
 
 
-<a id="org20d8c62"></a>
+<a id="org4123e87"></a>
 
 # Requirements
 
@@ -93,7 +92,7 @@ Currently only requirements are:
 -   rofi
 
 
-<a id="orgcc8d23e"></a>
+<a id="org2dd758a"></a>
 
 # TODO
 
