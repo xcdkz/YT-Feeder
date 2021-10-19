@@ -185,6 +185,11 @@ else
         coproc player ( nohup mpv --no-video "$LINK" > /dev/null 2>&1 ) &&
         rm "$CACHE/link"
         echo ${player_PID} > "$CACHE/pid"
+    elif [ x"$@" = x"open in a web browser" ]
+    then
+        LINK=$( cat "$CACHE/link" )
+        coproc player ( nohup xdg-open $LINK > /dev/null 2>&1 ) &&
+        cd .
     elif [ x"$@" = x"custom" ]
     then
         cat "$CONFIG" | tail -n3 > "$CACHE/TMP"
@@ -216,6 +221,7 @@ else
             echo "watch(best)"
             echo "watch(worst)"
             echo "play in the background"
+            echo "open in a web browser"
             echo "download"
             echo "download audio"
             echo "custom"
