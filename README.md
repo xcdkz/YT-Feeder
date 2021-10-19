@@ -13,8 +13,11 @@
 
 **[YT-Feeder Example Video](https://youtu.be/V2Oi5kPDTj4 )**
 
-<p align=&ldquo;center&rdquo;> <img src=&ldquo;./src/yt-feeder-1.png&rdquo; width=&ldquo;700&rdquo;> <img src=&ldquo;./src/yt-feeder-2.png&rdquo; width=&ldquo;700&rdquo;> <img src=&ldquo;./src/yt-feeder-3.png&rdquo; width=&ldquo;700&rdquo;> </p>
-
+<p align="center">
+  <img src="./src/yt-feeder-1.png" width="700">
+  <img src="./src/yt-feeder-2.png" width="700">
+  <img src="./src/yt-feeder-3.png" width="700">
+</p>
 
 <a id="org7a82e93"></a>
 
