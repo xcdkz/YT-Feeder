@@ -1,13 +1,13 @@
-- [IMPORTANT](#org1d11116)
-- [Introduction](#org4a0a4c2)
-- [Usage](#org108be3c)
-  - [Worth noting](#org5ba5232)
-- [Configuration](#org5de0266)
-- [Requirements](#org87449b3)
-- [TODO](#orga27bf09)
+- [IMPORTANT](#orged709b8)
+- [Introduction](#orge6fc314)
+- [Usage](#org67de723)
+  - [Worth noting](#org2d188e3)
+- [Configuration](#orgdffe9d3)
+- [Requirements](#org673c99a)
+- [TODO](#org7bffe60)
 
 
-<a id="org1d11116"></a>
+<a id="orged709b8"></a>
 
 # IMPORTANT
 
@@ -15,7 +15,7 @@
 2.  There is an issue with bots &ldquo;advertising&rdquo; this project to random people on Discord, asking for stars and offering free Discord Nitro in exchange. I don&rsquo;t know who these people are and why they are doing that, but if you expect any kind of reward for giving a star my project, please don&rsquo;t do it. Having said that, I hope you enjoy using my script 🙂
 
 
-<a id="org4a0a4c2"></a>
+<a id="orge6fc314"></a>
 
 # Introduction
 
@@ -24,7 +24,7 @@
 YT-Feeder is a Rofi-Based RSS Reader made specifically for YouTube video platform. It&rsquo;s written purely in bash and allows user to watch or download new videos.
 
 
-<a id="org108be3c"></a>
+<a id="org67de723"></a>
 
 # Usage
 
@@ -52,14 +52,14 @@ I highly suggest binding the above command to your keyboard shortcut of choice. 
 There&rsquo;s also an option to refresh the RSS feeds at the top of the list and there might be an option to stop currently playing audio in the background(only after selecting &ldquo;play in the background&rdquo;).
 
 
-<a id="org5ba5232"></a>
+<a id="org2d188e3"></a>
 
 ## Worth noting
 
 The default directory for downloaded videos is ~/Videos/ and the default directory for downloaded audio is ~/Music/.
 
 
-<a id="org5de0266"></a>
+<a id="orgdffe9d3"></a>
 
 # Configuration
 
@@ -75,10 +75,10 @@ COMMAND|my_custom_command
 DOWNLOAD_AUDIO|~/Music/folder_for_yt_audio
 ```
 
-Comments must be placed on separate lines, every line starting with &ldquo;//&rdquo; will be ignored by the script DOWNLOAD specifies the custom directory where you wish to download your videos. COMMAND specifies your custom command to use on youtube links. DOWNLOAD<sub>AUDIO</sub> specifies the custom directory where you wish to download your audio.
+Comments must be placed on separate lines, every line starting with &ldquo;//&rdquo; will be ignored by the script DOWNLOAD specifies the custom directory where you wish to download your videos. COMMAND specifies your custom command to use on youtube links. `DOWNLOAD_AUDIO` specifies the custom directory where you wish to download your audio.
 
 
-<a id="org87449b3"></a>
+<a id="org673c99a"></a>
 
 # Requirements
 
@@ -89,7 +89,7 @@ Currently only requirements are:
 -   rofi
 
 
-<a id="orga27bf09"></a>
+<a id="org7bffe60"></a>
 
 # TODO
 
