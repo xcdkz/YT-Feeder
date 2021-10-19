@@ -11,9 +11,9 @@
 
 # Gallery
 
-**[YT-Feeder Example Video](https://youtu.be/V2Oi5kPDTj4 )**
 
 <p align="center">
+  <a href="https://youtu.be/V2Oi5kPDTj4" style="bold" align="center">YT-Feeder Example Video</a>
   <img src="./src/yt-feeder-1.png" width="700">
   <img src="./src/yt-feeder-2.png" width="700">
   <img src="./src/yt-feeder-3.png" width="700">
