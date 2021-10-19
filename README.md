@@ -13,11 +13,11 @@
 
 **[YT-Feeder Example Video](https://youtu.be/V2Oi5kPDTj4 )**
 
-![img](./src/yt-feeder-1.png | width=600)
+![](./src/yt-feeder-1.png | width=600)
 
-![img](./src/yt-feeder-2.png | width=600)
+![](./src/yt-feeder-2.png | width=600)
 
-![img](./src/yt-feeder-3.png | width=600)
+![](./src/yt-feeder-3.png | width=600)
 
 
 <a id="org0bb9401"></a>
