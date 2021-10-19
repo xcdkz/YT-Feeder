@@ -202,7 +202,7 @@ else
         else
             TITLE=$( cat "$CACHE/last" )
             VIDEO=$( echo "$@" | sed 's/\"/quot;/g' | sed 's/\&/\&amp;/g' | sed 's/quot;/\&quot;/g' )
-            LINK=$( cat "$CACHE_RSS/$TITLE" | grep -A 1 "<title>$VIDEO" | tail -n1 | sed -r 's/^.+href="([^"]+)".+$/\1/' )
+            LINK=$( cat "$CACHE_RSS/$TITLE" | grep -F -A 1 "<title>$VIDEO" | tail -n1 | sed -r 's/^.+href="([^"]+)".+$/\1/' )
             echo $LINK > "$CACHE/link"
             echo "watch(best)"
             echo "watch(worst)"
