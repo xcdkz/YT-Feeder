@@ -1,29 +1,29 @@
-- [IMPORTANT](#orgafee469)
-- [Introduction](#org1d0dec8)
-- [Usage](#orgae15c04)
-  - [Worth noting](#org5e1a62f)
-- [Configuration](#org6952fe2)
-- [Requirements](#org4123e87)
-- [TODO](#org2dd758a)
+- [IMPORTANT](#orga8de1a4)
+- [Introduction](#orgf1ef9e5)
+- [Usage](#org4b622e1)
+  - [Worth noting](#org47cb5ff)
+- [Configuration](#org9dd3805)
+- [Requirements](#orge965879)
+- [TODO](#orgde33da4)
 
 
-<a id="orgafee469"></a>
+<a id="orga8de1a4"></a>
 
 # IMPORTANT
 
 **There was an important change to the config file syntax, check it before filling an issue. It was required to make sure some edge cases works and it makes it easier to manage configuration file. There probably won&rsquo;t be another syntax change, this one can be considered final**
 
 
-<a id="org1d0dec8"></a>
+<a id="orgf1ef9e5"></a>
 
 # Introduction
 
-**[YT-Feeder Example Video](https://youtu.be/7dMLBVUZDJs)**
+**[YT-Feeder Example Video](https://youtu.be/V2Oi5kPDTj4 )**
 
 YT-Feeder is a Rofi-Based RSS Reader made specifically for YouTube video platform. It&rsquo;s written purely in bash and allows user to watch or download new videos.
 
 
-<a id="orgae15c04"></a>
+<a id="org4b622e1"></a>
 
 # Usage
 
@@ -51,14 +51,14 @@ I highly suggest binding the above command to your keyboard shortcut of choice. 
 There&rsquo;s also an option to refresh the RSS feeds at the top of the list and there might be an option to stop currently playing audio in the background(only after selecting &ldquo;play in the background&rdquo;).
 
 
-<a id="org5e1a62f"></a>
+<a id="org47cb5ff"></a>
 
 ## Worth noting
 
 The default directory for downloaded videos is ~/Videos/ and the default directory for downloaded audio is ~/Music/.
 
 
-<a id="org6952fe2"></a>
+<a id="org9dd3805"></a>
 
 # Configuration
 
@@ -81,7 +81,7 @@ Comments must be placed on separate lines, every line starting with &ldquo;//&rd
 -   `DOWNLOAD_AUDIO` specifies the custom directory where you wish to download your audio.
 
 
-<a id="org4123e87"></a>
+<a id="orge965879"></a>
 
 # Requirements
 
@@ -92,7 +92,7 @@ Currently only requirements are:
 -   rofi
 
 
-<a id="org2dd758a"></a>
+<a id="orgde33da4"></a>
 
 # TODO
 
