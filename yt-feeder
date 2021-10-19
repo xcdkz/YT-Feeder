@@ -4,6 +4,7 @@ MAINFOLDER="${HOME}/.config/yt-feeder"
 CONFIG="${MAINFOLDER}/config"
 CACHE="${HOME}/.cache/yt-feeder"
 CACHE_RSS="${HOME}/.cache/yt-feeder/RSS"
+CACHE_WATCHED="${HOME}/.cache/yt-feeder/watched"
 
 f_download () {
     if [[ $# == 2 ]]
@@ -68,7 +69,6 @@ then
     if [ ! -d "$MAINFOLDER" ]
     then
         mkdir -p "$MAINFOLDER"
-        touch "$CONFIG"
     fi
     if [ ! -f "$CONFIG" ]
     then
@@ -78,13 +78,17 @@ then
     then
         mkdir -p "$CACHE_RSS"
     fi
+    if [ ! -d "$CACHE_WATCHED" ]
+    then
+        mkdir -p "$CACHE_WATCHED"
+    fi
 fi
 
 if [ $# -eq 0 ]
 then
     f_check_pid "stop"
     echo "refresh(it may take a while)"
-    ls -1 "$CACHE_RSS" | sed "s/^/-> /"
+    ls -1 "$CACHE_RSS" | sed "s/^/\|-> /"
 else
     if [ x"$@" = x"refresh(it may take a while)" ]
     then
@@ -111,7 +115,24 @@ else
             done < $CONFIG
         fi
         f_check_pid "stop"
-        ls -1 "$CACHE_RSS" | sed "s/^/-> /"
+        ls -1 "$CACHE_RSS" > "$CACHE/tmp" &&
+        while read p; do
+            if [ ! -f "$CACHE_WATCHED/$p" ]
+            then
+                touch "$CACHE_WATCHED/$p"
+            fi
+            CHECK="$p"
+            cat "$CACHE_RSS/${CHECK}" | grep "<title>" | sed -e :a -e 's/<[^>]*>//g;/</N;//ba' | tail -n +2 > "$CACHE/tmp_titles"
+            COUNTER=0
+            while read q; do
+                if [[ $( cat "$CACHE_WATCHED/$p" | grep -F -c "$q" ) == 0 ]]
+                then
+                   ((COUNTER++))
+                   echo "$q" >> "$CACHE_WATCHED/$p"
+                fi
+            done < "$CACHE/tmp_titles"
+            echo "($COUNTER new videos)|-> $p"
+        done < "$CACHE/tmp"
     elif [ x"$@" = x"stop" ]
     then
         f_check_pid
@@ -167,15 +188,20 @@ else
         done < "$CONFIG"
     else
         CHECK=$@
-        if [ x${CHECK:0:2} = x"->" ]
+        if [[ $( echo "$CHECK" | grep -F -c "|-> " ) == 1 ]]
         then
-            echo ${CHECK:3} > "$CACHE/last"
             TAG="media:title"
-            cat "$CACHE_RSS/${CHECK:3}" | grep "<title>" | sed -e :a -e 's/<[^>]*>//g;/</N;//ba' | tail -n +2 | sed 's/\&quot;/\"/g' | sed 's/\&amp;/\&/g'
+            if [[ "${CHECK:0:4}" == "|-> " ]]
+            then
+                CHECK=$( echo "${CHECK:4}" )
+            else
+                CHECK=$( echo "$CHECK" | awk -F '\|\-\> ' '{print $2}' )
+            fi
+            echo "$CHECK" > "$CACHE/last"
+            cat "$CACHE_RSS/$CHECK" | grep "<title>" | sed -e :a -e 's/<[^>]*>//g;/</N;//ba' | tail -n +2 | sed 's/\&quot;/\"/g' | sed 's/\&amp;/\&/g' | sed 's/^  //'
         else
             TITLE=$( cat "$CACHE/last" )
             VIDEO=$( echo "$@" | sed 's/\"/quot;/g' | sed 's/\&/\&amp;/g' | sed 's/quot;/\&quot;/g' )
-            VIDEO=${VIDEO:2}
             LINK=$( cat "$CACHE_RSS/$TITLE" | grep -A 1 "<title>$VIDEO" | tail -n1 | sed -r 's/^.+href="([^"]+)".+$/\1/' )
             echo $LINK > "$CACHE/link"
             echo "watch(best)"
