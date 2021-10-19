@@ -1,34 +1,33 @@
-- [Gallery](#org2ab85ac)
-- [Introduction](#org0bb9401)
-- [Usage](#orgbf033c0)
-  - [Worth noting](#orge2cc6ef)
-- [Configuration](#orgef82c8a)
-- [Requirements](#org2f87245)
-- [TODO](#org1746d19)
+- [Gallery](#orgd583cfa)
+- [Introduction](#org4bb8cd2)
+- [Usage](#org3350588)
+  - [Worth noting](#org4c9b73e)
+- [Configuration](#org36257a9)
+- [Requirements](#org2f30f84)
+- [TODO](#org971f9a2)
 
 
-<a id="org2ab85ac"></a>
+<a id="orgd583cfa"></a>
 
 # Gallery
 
 **[YT-Feeder Example Video](https://youtu.be/V2Oi5kPDTj4 )**
 
-![](https://raw.githubusercontent.com/two-six/YT-Feeder/main/src/yt-feeder-1.png | width=600)
+![img](./src/yt-feeder-1.png)
 
-![](https://raw.githubusercontent.com/two-six/YT-Feeder/main/src/yt-feeder-2.png | width=600)
+![img](./src/yt-feeder-2.png)
 
-![](https://raw.githubusercontent.com/two-six/YT-Feeder/main/src/yt-feeder-3.png | width=600)
+![img](./src/yt-feeder-3.png)
 
 
-
-<a id="org0bb9401"></a>
+<a id="org4bb8cd2"></a>
 
 # Introduction
 
 YT-Feeder is a Rofi-Based RSS Reader made specifically for YouTube video platform. It&rsquo;s written purely in bash and allows user to watch or download new videos.
 
 
-<a id="orgbf033c0"></a>
+<a id="org3350588"></a>
 
 # Usage
 
@@ -56,14 +55,14 @@ I highly suggest binding the above command to your keyboard shortcut of choice. 
 There&rsquo;s also an option to refresh the RSS feeds at the top of the list and there might be an option to stop currently playing audio in the background(only after selecting &ldquo;play in the background&rdquo;).
 
 
-<a id="orge2cc6ef"></a>
+<a id="org4c9b73e"></a>
 
 ## Worth noting
 
 The default directory for downloaded videos is ~/Videos/ and the default directory for downloaded audio is ~/Music/.
 
 
-<a id="orgef82c8a"></a>
+<a id="org36257a9"></a>
 
 # Configuration
 
@@ -86,7 +85,7 @@ Comments must be placed on separate lines, every line starting with &ldquo;//&rd
 -   `DOWNLOAD_AUDIO` specifies the custom directory where you wish to download your audio.
 
 
-<a id="org2f87245"></a>
+<a id="org2f30f84"></a>
 
 # Requirements
 
@@ -97,7 +96,7 @@ Currently only requirements are:
 -   rofi
 
 
-<a id="org1746d19"></a>
+<a id="org971f9a2"></a>
 
 # TODO
 
