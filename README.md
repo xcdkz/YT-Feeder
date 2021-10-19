@@ -1,29 +1,28 @@
-- [IMPORTANT](#orga8de1a4)
-- [Introduction](#orgf1ef9e5)
-- [Usage](#org4b622e1)
-  - [Worth noting](#org47cb5ff)
-- [Configuration](#org9dd3805)
-- [Requirements](#orge965879)
-- [TODO](#orgde33da4)
+- [IMPORTANT](#orgd3403d0)
+- [Introduction](#org08e2cbb)
+- [Usage](#org12375b8)
+  - [Worth noting](#orgc39f9bf)
+- [Configuration](#org4be44c6)
+- [Requirements](#org3673e99)
+- [TODO](#org7f53b83)
+- [Gallery](#org2c30b96)
 
 
-<a id="orga8de1a4"></a>
+<a id="orgd3403d0"></a>
 
 # IMPORTANT
 
 **There was an important change to the config file syntax, check it before filling an issue. It was required to make sure some edge cases works and it makes it easier to manage configuration file. There probably won&rsquo;t be another syntax change, this one can be considered final**
 
 
-<a id="orgf1ef9e5"></a>
+<a id="org08e2cbb"></a>
 
 # Introduction
-
-**[YT-Feeder Example Video](https://youtu.be/V2Oi5kPDTj4 )**
 
 YT-Feeder is a Rofi-Based RSS Reader made specifically for YouTube video platform. It&rsquo;s written purely in bash and allows user to watch or download new videos.
 
 
-<a id="org4b622e1"></a>
+<a id="org12375b8"></a>
 
 # Usage
 
@@ -51,14 +50,14 @@ I highly suggest binding the above command to your keyboard shortcut of choice. 
 There&rsquo;s also an option to refresh the RSS feeds at the top of the list and there might be an option to stop currently playing audio in the background(only after selecting &ldquo;play in the background&rdquo;).
 
 
-<a id="org47cb5ff"></a>
+<a id="orgc39f9bf"></a>
 
 ## Worth noting
 
 The default directory for downloaded videos is ~/Videos/ and the default directory for downloaded audio is ~/Music/.
 
 
-<a id="org9dd3805"></a>
+<a id="org4be44c6"></a>
 
 # Configuration
 
@@ -81,7 +80,7 @@ Comments must be placed on separate lines, every line starting with &ldquo;//&rd
 -   `DOWNLOAD_AUDIO` specifies the custom directory where you wish to download your audio.
 
 
-<a id="orge965879"></a>
+<a id="org3673e99"></a>
 
 # Requirements
 
@@ -92,7 +91,7 @@ Currently only requirements are:
 -   rofi
 
 
-<a id="orgde33da4"></a>
+<a id="org7f53b83"></a>
 
 # TODO
 
@@ -103,3 +102,12 @@ Currently only requirements are:
 -   [X] Add option to play video in the background
 -   [X] Add an ability to just use channel&rsquo;s ID in the config file
 -   [X] Add option to use a custom script on selected video
+
+
+<a id="org2c30b96"></a>
+
+# Gallery
+
+**[YT-Feeder Example Video](https://youtu.be/V2Oi5kPDTj4 )**
+
+![img](./src/yt-feeder-1.png) ![img](./src/yt-feeder-2.png) ![img](./src/yt-feeder-3.png)
