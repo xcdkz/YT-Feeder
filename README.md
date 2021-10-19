@@ -1,28 +1,28 @@
-- [IMPORTANT](#org973bfa4)
-- [Introduction](#org3356d9c)
-- [Usage](#org43c6609)
-  - [Worth noting](#orga73f35e)
-- [Configuration](#org1c44d26)
-- [Requirements](#org9c06111)
-- [TODO](#org22af2bd)
-- [Gallery](#org94d30bb)
+- [IMPORTANT](#org3254775)
+- [Introduction](#orgae18ac9)
+- [Usage](#org2012d2f)
+  - [Worth noting](#org071ebfd)
+- [Configuration](#org2dec2fe)
+- [Requirements](#org27625d3)
+- [TODO](#org1ff2dfb)
+- [Gallery](#org90f9608)
 
 
-<a id="org973bfa4"></a>
+<a id="org3254775"></a>
 
 # IMPORTANT
 
 **There was an important change to the config file syntax, check it before filling an issue. It was required to make sure some edge cases works and it makes it easier to manage configuration file. There probably won&rsquo;t be another syntax change, this one can be considered final**
 
 
-<a id="org3356d9c"></a>
+<a id="orgae18ac9"></a>
 
 # Introduction
 
 YT-Feeder is a Rofi-Based RSS Reader made specifically for YouTube video platform. It&rsquo;s written purely in bash and allows user to watch or download new videos.
 
 
-<a id="org43c6609"></a>
+<a id="org2012d2f"></a>
 
 # Usage
 
@@ -50,14 +50,14 @@ I highly suggest binding the above command to your keyboard shortcut of choice. 
 There&rsquo;s also an option to refresh the RSS feeds at the top of the list and there might be an option to stop currently playing audio in the background(only after selecting &ldquo;play in the background&rdquo;).
 
 
-<a id="orga73f35e"></a>
+<a id="org071ebfd"></a>
 
 ## Worth noting
 
 The default directory for downloaded videos is ~/Videos/ and the default directory for downloaded audio is ~/Music/.
 
 
-<a id="org1c44d26"></a>
+<a id="org2dec2fe"></a>
 
 # Configuration
 
@@ -80,7 +80,7 @@ Comments must be placed on separate lines, every line starting with &ldquo;//&rd
 -   `DOWNLOAD_AUDIO` specifies the custom directory where you wish to download your audio.
 
 
-<a id="org9c06111"></a>
+<a id="org27625d3"></a>
 
 # Requirements
 
@@ -91,7 +91,7 @@ Currently only requirements are:
 -   rofi
 
 
-<a id="org22af2bd"></a>
+<a id="org1ff2dfb"></a>
 
 # TODO
 
@@ -104,10 +104,15 @@ Currently only requirements are:
 -   [X] Add option to use a custom script on selected video
 
 
-<a id="org94d30bb"></a>
+<a id="org90f9608"></a>
 
 # Gallery
 
 **[YT-Feeder Example Video](https://youtu.be/V2Oi5kPDTj4 )**
 
-![img](./src/yt-feeder-1.png) ![img](./src/yt-feeder-2.png) ![img](./src/yt-feeder-3.png)
+![img](./src/yt-feeder-1.png) | width=600
+
+![img](./src/yt-feeder-2.png) | width=600
+
+![img](./src/yt-feeder-3.png) | width=600
+
