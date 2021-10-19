@@ -1,33 +1,29 @@
-- [Gallery](#orgd583cfa)
-- [Introduction](#org4bb8cd2)
-- [Usage](#org3350588)
-  - [Worth noting](#org4c9b73e)
-- [Configuration](#org36257a9)
-- [Requirements](#org2f30f84)
-- [TODO](#org971f9a2)
+- [Gallery](#org733a2cb)
+- [Introduction](#org7a82e93)
+- [Usage](#org6469f17)
+  - [Worth noting](#org1d040ca)
+- [Configuration](#org5bcc3bf)
+- [Requirements](#org0e6acd3)
+- [TODO](#org3685691)
 
 
-<a id="orgd583cfa"></a>
+<a id="org733a2cb"></a>
 
 # Gallery
 
 **[YT-Feeder Example Video](https://youtu.be/V2Oi5kPDTj4 )**
 
-<p align="center">
-  <img src="./src/yt-feeder-1.png" width="700">
-  <img src="./src/yt-feeder-2.png" width="700">
-  <img src="./src/yt-feeder-3.png" width="700">
-</p>
+<p align=&ldquo;center&rdquo;> <img src=&ldquo;./src/yt-feeder-1.png&rdquo; width=&ldquo;700&rdquo;> <img src=&ldquo;./src/yt-feeder-2.png&rdquo; width=&ldquo;700&rdquo;> <img src=&ldquo;./src/yt-feeder-3.png&rdquo; width=&ldquo;700&rdquo;> </p>
 
 
-<a id="org4bb8cd2"></a>
+<a id="org7a82e93"></a>
 
 # Introduction
 
 YT-Feeder is a Rofi-Based RSS Reader made specifically for YouTube video platform. It&rsquo;s written purely in bash and allows user to watch or download new videos.
 
 
-<a id="org3350588"></a>
+<a id="org6469f17"></a>
 
 # Usage
 
@@ -40,7 +36,7 @@ chmod +x YT-Feeder
 Then to actually run the script:
 
 ```bash
-rofi -show YT-Feeder -modi "YT-Feeder:Absolute/Path/To/YT-Feeder"
+rofi -show YT-Feeder -modi "YT-Feeder:/Absolute/Path/To/YT-Feeder"
 ```
 
 I highly suggest binding the above command to your keyboard shortcut of choice. After launch you can select your favorite channel from the list, then select video and then you have a choice to:
@@ -55,14 +51,14 @@ I highly suggest binding the above command to your keyboard shortcut of choice. 
 There&rsquo;s also an option to refresh the RSS feeds at the top of the list and there might be an option to stop currently playing audio in the background(only after selecting &ldquo;play in the background&rdquo;).
 
 
-<a id="org4c9b73e"></a>
+<a id="org1d040ca"></a>
 
 ## Worth noting
 
 The default directory for downloaded videos is ~/Videos/ and the default directory for downloaded audio is ~/Music/.
 
 
-<a id="org36257a9"></a>
+<a id="org5bcc3bf"></a>
 
 # Configuration
 
@@ -85,7 +81,7 @@ Comments must be placed on separate lines, every line starting with &ldquo;//&rd
 -   `DOWNLOAD_AUDIO` specifies the custom directory where you wish to download your audio.
 
 
-<a id="org2f30f84"></a>
+<a id="org0e6acd3"></a>
 
 # Requirements
 
@@ -96,7 +92,7 @@ Currently only requirements are:
 -   rofi
 
 
-<a id="org971f9a2"></a>
+<a id="org3685691"></a>
 
 # TODO
 
