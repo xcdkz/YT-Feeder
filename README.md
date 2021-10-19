@@ -1,21 +1,21 @@
-- [IMPORTANT](#org06e906f)
-- [Introduction](#org486215a)
-- [Usage](#orgdde9040)
-  - [Worth noting](#org7d4c44b)
-- [Configuration](#org09cd554)
-- [Requirements](#org0e9c483)
-- [TODO](#org73d5094)
+- [IMPORTANT](#org1d11116)
+- [Introduction](#org4a0a4c2)
+- [Usage](#org108be3c)
+  - [Worth noting](#org5ba5232)
+- [Configuration](#org5de0266)
+- [Requirements](#org87449b3)
+- [TODO](#orga27bf09)
 
 
-<a id="org06e906f"></a>
+<a id="org1d11116"></a>
 
 # IMPORTANT
 
-1.  **There was an important change to the config file syntax, check it before filling an issue. It was needed to make sure some edge works and it makes it easier to manage configuration file. There probably won&rsquo;t be another syntax change, this one can be considered final**
+1.  **There was an important change to the config file syntax, check it before filling an issue. It was required to make sure some edge cases works and it makes it easier to manage configuration file. There probably won&rsquo;t be another syntax change, this one can be considered final**
 2.  There is an issue with bots &ldquo;advertising&rdquo; this project to random people on Discord, asking for stars and offering free Discord Nitro in exchange. I don&rsquo;t know who these people are and why they are doing that, but if you expect any kind of reward for giving a star my project, please don&rsquo;t do it. Having said that, I hope you enjoy using my script 🙂
 
 
-<a id="org486215a"></a>
+<a id="org4a0a4c2"></a>
 
 # Introduction
 
@@ -24,7 +24,7 @@
 YT-Feeder is a Rofi-Based RSS Reader made specifically for YouTube video platform. It&rsquo;s written purely in bash and allows user to watch or download new videos.
 
 
-<a id="orgdde9040"></a>
+<a id="org108be3c"></a>
 
 # Usage
 
@@ -52,14 +52,14 @@ I highly suggest binding the above command to your keyboard shortcut of choice. 
 There&rsquo;s also an option to refresh the RSS feeds at the top of the list and there might be an option to stop currently playing audio in the background(only after selecting &ldquo;play in the background&rdquo;).
 
 
-<a id="org7d4c44b"></a>
+<a id="org5ba5232"></a>
 
 ## Worth noting
 
 The default directory for downloaded videos is ~/Videos/ and the default directory for downloaded audio is ~/Music/.
 
 
-<a id="org09cd554"></a>
+<a id="org5de0266"></a>
 
 # Configuration
 
@@ -78,7 +78,7 @@ DOWNLOAD_AUDIO|~/Music/folder_for_yt_audio
 Comments must be placed on separate lines, every line starting with &ldquo;//&rdquo; will be ignored by the script DOWNLOAD specifies the custom directory where you wish to download your videos. COMMAND specifies your custom command to use on youtube links. DOWNLOAD<sub>AUDIO</sub> specifies the custom directory where you wish to download your audio.
 
 
-<a id="org0e9c483"></a>
+<a id="org87449b3"></a>
 
 # Requirements
 
@@ -89,7 +89,7 @@ Currently only requirements are:
 -   rofi
 
 
-<a id="org73d5094"></a>
+<a id="orga27bf09"></a>
 
 # TODO
 
