@@ -1,20 +1,21 @@
-- [IMPORTANT](#orgbce58a6)
-- [Introduction](#org5986162)
-- [Usage](#orgd7b9141)
-  - [Worth noting](#orgc6597b4)
-- [Configuration](#org8aaa35d)
-- [Requirements](#org778d3bb)
-- [TODO](#org29ea17d)
+- [IMPORTANT](#org06e906f)
+- [Introduction](#org486215a)
+- [Usage](#orgdde9040)
+  - [Worth noting](#org7d4c44b)
+- [Configuration](#org09cd554)
+- [Requirements](#org0e9c483)
+- [TODO](#org73d5094)
 
 
-<a id="orgbce58a6"></a>
+<a id="org06e906f"></a>
 
 # IMPORTANT
 
-There is an issue with bots &ldquo;advertising&rdquo; this project to random people on Discord, asking for stars and offering free Discord Nitro in exchange. I don&rsquo;t know who these people are and why they are doing that, but if you expect any kind of reward for giving a star my project, please don&rsquo;t do it. Having said that, I hope you enjoy using my script 🙂
+1.  **There was an important change to the config file syntax, check it before filling an issue. It was needed to make sure some edge works and it makes it easier to manage configuration file. There probably won&rsquo;t be another syntax change, this one can be considered final**
+2.  There is an issue with bots &ldquo;advertising&rdquo; this project to random people on Discord, asking for stars and offering free Discord Nitro in exchange. I don&rsquo;t know who these people are and why they are doing that, but if you expect any kind of reward for giving a star my project, please don&rsquo;t do it. Having said that, I hope you enjoy using my script 🙂
 
 
-<a id="org5986162"></a>
+<a id="org486215a"></a>
 
 # Introduction
 
@@ -23,7 +24,7 @@ There is an issue with bots &ldquo;advertising&rdquo; this project to random peo
 YT-Feeder is a Rofi-Based RSS Reader made specifically for YouTube video platform. It&rsquo;s written purely in bash and allows user to watch or download new videos.
 
 
-<a id="orgd7b9141"></a>
+<a id="orgdde9040"></a>
 
 # Usage
 
@@ -44,37 +45,40 @@ I highly suggest binding the above command to your keyboard shortcut of choice. 
 -   watch(best) -> watch it in the best quality
 -   watch(worst) -> watch it in the worst quality
 -   play in the background -> play audio from video in the background
--   download -> download the video
--   command -> use your custom command on the video&rsquo;s link
+-   download -> download video
+-   download audio -> download audio from video
+-   command -> use your custom command on video&rsquo;s link
 
 There&rsquo;s also an option to refresh the RSS feeds at the top of the list and there might be an option to stop currently playing audio in the background(only after selecting &ldquo;play in the background&rdquo;).
 
 
-<a id="orgc6597b4"></a>
+<a id="org7d4c44b"></a>
 
 ## Worth noting
 
-The default directory for downloaded videos is ~/Videos/
+The default directory for downloaded videos is ~/Videos/ and the default directory for downloaded audio is ~/Music/.
 
 
-<a id="org8aaa35d"></a>
+<a id="org09cd554"></a>
 
 # Configuration
 
 Change ~/.config/yt-feeder/config file to configure this script. If it doesn&rsquo;t exist, create it. The general syntax for this file is:
 
 ```
-rss link or channel's ID|channel's name
-rss link or channel's ID|channel's name
-rss link or channel's ID|channel's name
+// Some comment
+rss link or channel's ID
+rss link or channel's ID
+rss link or channel's ID
 DOWNLOAD|~/Videos/folder_for_yt_videos
 COMMAND|my_custom_command
+DOWNLOAD_AUDIO|~/Music/folder_for_yt_audio
 ```
 
-DOWNLOAD and COMMAND lines **must** be at the end of the config file if you wish to use them. DOWNLOAD specifies the custom directory where you wish to download your videos. COMMAND specifies your custom command to use on youtube links.
+Comments must be placed on separate lines, every line starting with &ldquo;//&rdquo; will be ignored by the script DOWNLOAD specifies the custom directory where you wish to download your videos. COMMAND specifies your custom command to use on youtube links. DOWNLOAD<sub>AUDIO</sub> specifies the custom directory where you wish to download your audio.
 
 
-<a id="org778d3bb"></a>
+<a id="org0e9c483"></a>
 
 # Requirements
 
@@ -85,12 +89,12 @@ Currently only requirements are:
 -   rofi
 
 
-<a id="org29ea17d"></a>
+<a id="org73d5094"></a>
 
 # TODO
 
--   [ ] Auto-detect Channel&rsquo;s name from RSS Feed
 -   [ ] Add information about the number of new videos
+-   [X] Auto-detect Channel&rsquo;s name from RSS Feed
 -   [X] Clean bash code
 -   [X] Add option to change the default directory of downloaded videos
 -   [X] Add option to play video in the background

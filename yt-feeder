@@ -5,42 +5,42 @@ CONFIG="${MAINFOLDER}/config"
 CACHE="${HOME}/.cache/yt-feeder"
 CACHE_RSS="${HOME}/.cache/yt-feeder/RSS"
 
-download () {
-    if [[ $# == 1 ]]
+f_download () {
+    if [[ $# == 2 ]]
     then
-        coproc player ( nohup youtube-dl -f best "$1" > /dev/null 2>&1 ) &&
+        coproc player ( nohup youtube-dl -f "$1" -o "~/Videos/%(title)s.%(ext)s" "$2" > /dev/null 2>&1 ) &&
         cd .
-    elif [[ $# == 2 ]]
+    elif [[ $# == 3 ]]
     then
-        CHECK=$( echo "$1" | cut -d '|' -f2 )
+        CHECK=$( echo "$2" | cut -d '|' -f2 )
         REVERSE=$( echo "$CHECK" | rev )
         if [[ ${REVERSE:0:1} == "/" ]]
         then
-            coproc player ( nohup youtube-dl -f best -o "$CHECK%(title)s.%(ext)s" "$2" > /dev/null 2>&1 ) &&
+            coproc player ( nohup youtube-dl -f $1 -o "$CHECK%(title)s.%(ext)s" "$3" > /dev/null 2>&1 ) &&
             cd .
         else
-            coproc player ( nohup youtube-dl -f best -o "$CHECK/%(title)s.%(ext)s" "$2" > /dev/null 2>&1 ) &&
+            coproc player ( nohup youtube-dl -f $1 -o "$CHECK/%(title)s.%(ext)s" "$3" > /dev/null 2>&1 ) &&
             cd .
         fi
     else
-        echo "ERROR: Wrong number of arguments passed to the download () function"
+        echo "ERROR: Wrong number of arguments passed to the f_download () function"
         exit 1
     fi
 }
 
-custom () {
+f_custom () {
     if [[ $# == 1 ]]
     then
         LINK=$( cat "$CACHE/link" )
         coproc player ( nohup $( echo $1 | cut -d '|' -f2 ) "$LINK" > /dev/null 2>&1 ) &&
         cd .
     else
-        echo "ERROR: Wrong number of arguments passed to the custom () function"
+        echo "ERROR: Wrong number of arguments passed to the f_custom () function"
         exit 1
     fi
 }
 
-check_pid () {
+f_check_pid () {
     if [ -f "$CACHE/pid" ]
     then
         if [[ $# == 0 ]]
@@ -57,7 +57,7 @@ check_pid () {
                 rm "$CACHE/pid";
             fi
         else
-            echo "ERROR: Wrong number of arguments passed to the custom () function"
+            echo "ERROR: Wrong number of arguments passed to the f_check_pid () function"
             exit 1
         fi
     fi
@@ -82,7 +82,7 @@ fi
 
 if [ $# -eq 0 ]
 then
-    check_pid "stop"
+    f_check_pid "stop"
     echo "refresh(it may take a while)"
     ls -1 "$CACHE_RSS" | sed "s/^/-> /"
 else
@@ -93,23 +93,28 @@ else
             rm "$CACHE_RSS"/*
             LENGTH=$( wc -l $CONFIG )
             while read p; do
-                FEED=$( echo $p | cut -d '|' -f1 )
-                NAME=$( echo $p | cut -d '|' -f2 )
-                if [[ ! "${FEED:0:19}" == "https://www.youtube" && ! "$FEED" == "DOWNLOAD" && ! "$FEED" == "COMMAND" ]]
+                if [ -z "$p" ]
+                then
+                    continue
+                fi
+                FEED=$( echo $p )
+                if [[ ! "${FEED:0:19}" == "https://www.youtube" && ! "${p:0:8}" == "DOWNLOAD" && ! "${p:0:7}" == "COMMAND" && ! "${FEED:0:2}" == "//" ]]
                 then
                     FEED=$( echo "https://www.youtube.com/feeds/videos.xml?channel_id=$FEED" )
                 fi
-                if [[ ! "$FEED" == "DOWNLOAD" && ! "$FEED" == "COMMAND" ]]
+                if [[ ! "${p:0:8}" == "DOWNLOAD" && ! "${p:0:7}" == "COMMAND" && ! "${FEED:0:2}" == "//" ]]
                 then
-                    wget $FEED -O "$CACHE_RSS/$NAME"
+                    wget $FEED -O "$CACHE_RSS/TMP" &&
+                    NAME=$( cat "$CACHE_RSS/TMP" | grep "<title>" | sed -e :a -e 's/<[^>]*>//g;/</N;//ba' | head -n 1 )
+                    mv "$CACHE_RSS/TMP" "$CACHE_RSS/${NAME:1}"
                 fi
             done < $CONFIG
         fi
-        check_pid "stop"
+        f_check_pid "stop"
         ls -1 "$CACHE_RSS" | sed "s/^/-> /"
     elif [ x"$@" = x"stop" ]
     then
-        check_pid
+        f_check_pid
     elif [ x"$@" = x"watch(best)" ]
     then
         LINK=$( cat "$CACHE/link" )
@@ -123,36 +128,43 @@ else
     elif [ x"$@" = x"download" ]
     then
         LINK=$( cat "$CACHE/link" )
-        CONF=$( cat "$CONFIG" | tail -n1 )
-        CONF_S=$( cat "$CONFIG" | tail -n2 | head -n1 )
-        if [ x"${CONF:0:8}" = x"DOWNLOAD" ]
-        then
-            download "$CONF" "$LINK"
-        elif [ x"${CONF_S:0:8}" = x"DOWNLOAD" ]
-        then
-            download "$CONF_S" "$LINK"
-        else
-            download "$LINK"
-        fi
-        rm $CACHE/last
+        while read p; do
+            if [[ "${p:0:8}" == "DOWNLOAD" ]]
+            then
+                f_download "best" "${p:9}" "$LINK"
+                exit 0
+            fi
+        done < "$CONFIG"
+        f_download "best" "$LINK"
+    elif [ x"$@" = x"download audio" ]
+    then
+        LINK=$( cat "$CACHE/link" )
+        cat "$CONFIG" | tail -n3 > "$CACHE/TMP"
+        while read p; do
+            if [[ "${p:0:14}" == "DOWNLOAD_AUDIO" ]]
+            then
+                f_download "bestaudio" "${p:15}" "$LINK"
+                exit 0
+            fi
+        done < "$CONFIG"
+        f_download "bestaudio" "~/Music" "$LINK"
     elif [ x"$@" = x"play in the background" ]
     then
-        check_pid
+        f_check_pid
         LINK=$( cat "$CACHE/link" )
         coproc player ( nohup mpv --no-video "$LINK" > /dev/null 2>&1 ) &&
         rm "$CACHE/link"
         echo ${player_PID} > "$CACHE/pid"
     elif [ x"$@" = x"custom" ]
     then
-        CONF=$( cat "$CONFIG" | tail -n1 )
-        CONF_S=$( cat "$CONFIG" | tail -n2 | head -n1 )
-        if [[ $( echo $CONF | cut -d '|' -f1 ) == "COMMAND" ]]
-        then
-            custom "$CONF"
-        elif [[ $( echo $CONF_F | cut -d '|' -f1 ) == "COMMAND" ]]
-        then
-            custom "$CONF_S"
-        fi
+        cat "$CONFIG" | tail -n3 > "$CACHE/TMP"
+        while read p; do
+            if [[ "${p:0:7}" == "COMMAND" ]]
+            then
+                f_custom "$p"
+                break
+            fi
+        done < "$CONFIG"
     else
         CHECK=$@
         if [ x${CHECK:0:2} = x"->" ]
@@ -161,15 +173,16 @@ else
             TAG="media:title"
             cat "$CACHE_RSS/${CHECK:3}" | grep "<title>" | sed -e :a -e 's/<[^>]*>//g;/</N;//ba' | tail -n +2 | sed 's/\&quot;/\"/g' | sed 's/\&amp;/\&/g'
         else
-            TITLE=$( cat $CACHE/last )
-            VIDEO=$( echo $@ | sed 's/\"/\quot;/g' | sed 's/\&/\&amp;/g' | sed 's/quot;/\&quot;/g' )
-            LINK=$( cat "$CACHE_RSS/$TITLE" | grep -A 1 "<title>$VIDEO" | tail -n1 | sed -r 's/^.+href="([^"]+)".+$/\1/')
-            rm "$CACHE/last"
+            TITLE=$( cat "$CACHE/last" )
+            VIDEO=$( echo "$@" | sed 's/\"/quot;/g' | sed 's/\&/\&amp;/g' | sed 's/quot;/\&quot;/g' )
+            VIDEO=${VIDEO:2}
+            LINK=$( cat "$CACHE_RSS/$TITLE" | grep -A 1 "<title>$VIDEO" | tail -n1 | sed -r 's/^.+href="([^"]+)".+$/\1/' )
             echo $LINK > "$CACHE/link"
             echo "watch(best)"
             echo "watch(worst)"
             echo "play in the background"
             echo "download"
+            echo "download audio"
             echo "custom"
         fi
     fi
