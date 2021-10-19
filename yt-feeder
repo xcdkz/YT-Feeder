@@ -105,8 +105,8 @@ else
                 if [[ ! "${p:0:8}" == "DOWNLOAD" && ! "${p:0:7}" == "COMMAND" && ! "${FEED:0:2}" == "//" ]]
                 then
                     wget $FEED -O "$CACHE_RSS/TMP" &&
-                    NAME=$( cat "$CACHE_RSS/TMP" | grep "<title>" | sed -e :a -e 's/<[^>]*>//g;/</N;//ba' | head -n 1 )
-                    mv "$CACHE_RSS/TMP" "$CACHE_RSS/${NAME:1}"
+                    NAME=$( cat "$CACHE_RSS/TMP" | grep "<title>" | sed -e :a -e 's/<[^>]*>//g;/</N;//ba' | head -n 1 | sed 's/^ *//' )
+                    mv "$CACHE_RSS/TMP" "$CACHE_RSS/$NAME"
                 fi
             done < $CONFIG
         fi
