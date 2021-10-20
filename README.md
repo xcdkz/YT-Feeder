@@ -1,13 +1,13 @@
-- [Gallery](#org11d174c)
-- [Introduction](#org900ec41)
-- [Usage](#org0684c49)
-  - [Worth noting](#org5f3b883)
-- [Configuration](#orgaf8af77)
-- [Requirements](#orgc3ceddb)
-- [TODO](#orgb76090f)
+- [Gallery](#org5ce75b6)
+- [Introduction](#org728ccd1)
+- [Usage](#org603eb4a)
+  - [Worth noting](#org9dd9b3a)
+- [Configuration](#org4802567)
+- [Requirements](#orgb913ab6)
+- [TODO](#org9768ee2)
 
 
-<a id="org11d174c"></a>
+<a id="org5ce75b6"></a>
 
 # Gallery
 
@@ -17,14 +17,14 @@
   <img src="./assets/yt-feeder-3.png" width="700">
 </p>
 
-<a id="org900ec41"></a>
+<a id="org728ccd1"></a>
 
 # Introduction
 
 YT-Feeder is a Rofi-Based RSS Reader made specifically for YouTube video platform. It&rsquo;s written purely in bash and allows user to watch or download new videos.
 
 
-<a id="org0684c49"></a>
+<a id="org603eb4a"></a>
 
 # Usage
 
@@ -53,14 +53,14 @@ I highly suggest binding the above command to your keyboard shortcut of choice. 
 There&rsquo;s also an option to refresh the RSS feeds at the top of the list and there might be an option to stop currently playing audio in the background(only after selecting &ldquo;play in the background&rdquo;).
 
 
-<a id="org5f3b883"></a>
+<a id="org9dd9b3a"></a>
 
 ## Worth noting
 
 The default directory for downloaded videos is ~/Videos/ and the default directory for downloaded audio is ~/Music/.
 
 
-<a id="orgaf8af77"></a>
+<a id="org4802567"></a>
 
 # Configuration
 
@@ -83,7 +83,7 @@ Comments must be placed on separate lines, every line starting with &ldquo;//&rd
 -   `DOWNLOAD_AUDIO` specifies the custom directory where you wish to download your audio.
 
 
-<a id="orgc3ceddb"></a>
+<a id="orgb913ab6"></a>
 
 # Requirements
 
@@ -95,11 +95,11 @@ Currently only requirements are:
 -   rofi
 
 
-<a id="orgb76090f"></a>
+<a id="org9768ee2"></a>
 
 # TODO
 
--   [X] Add an ability to open link in the browser
+-   [X] Add option to open link in the browser
 -   [X] Add information about the number of new videos
 -   [X] Auto-detect Channel&rsquo;s name from RSS Feed
 -   [X] Clean bash code
