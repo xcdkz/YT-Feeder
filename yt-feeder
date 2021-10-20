@@ -135,8 +135,8 @@ else
             then
                 COUNT=$( cat "$CACHE_WATCHED/$p" | wc -l )
                 RES=$(($COUNT-14))
-                RES="-n+$RES"
-                cat "$CACHE_WATCHED/$p" | tail "$RES" > "tmp_$p"
+                RES="-n-$RES"
+                cat "$CACHE_WATCHED/$p" | head "$RES" > "tmp_$p"
                 rm "$CACHE_WATCHED/$p"
                 mv "tmp_$p" "$CACHE_WATCHED/$p"
             fi
