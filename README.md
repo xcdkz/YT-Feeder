@@ -12,9 +12,9 @@
 # Gallery
 
 <p align="center">
-  <img src="./src/yt-feeder-1.png" width="700">
-  <img src="./src/yt-feeder-2.png" width="700">
-  <img src="./src/yt-feeder-3.png" width="700">
+  <img src="./assets/yt-feeder-1.png" width="700">
+  <img src="./assets/yt-feeder-2.png" width="700">
+  <img src="./assets/yt-feeder-3.png" width="700">
 </p>
 
 <a id="org900ec41"></a>
