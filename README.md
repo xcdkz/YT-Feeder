@@ -1,4 +1,3 @@
-- [IMPORTANT](#org07809aa)
 - [Gallery](#orgf4c80ad)
 - [Introduction](#orgeb0640e)
 - [Usage](#org1bcfc1b)
@@ -6,13 +5,6 @@
 - [Configuration](#org03ff352)
 - [Requirements](#org9dce189)
 - [TODO](#orgf91421a)
-
-
-<a id="org07809aa"></a>
-
-# IMPORTANT
-
-**It is possible there are still bots &ldquo;advertising&rdquo; my project and begging for free stars on it. I don&rsquo;t know who is creating these bots or why they are doing that. If you expect anything in return for starring my project, then don&rsquo;t do it. Having said that, enjoy using my script 🙂**
 
 
 <a id="orgf4c80ad"></a>
