@@ -93,6 +93,7 @@ Currently only requirements are:
 -   youtube-dl
 -   ffmpeg
 -   rofi
+-   wget
 
 
 <a id="orgf91421a"></a>
