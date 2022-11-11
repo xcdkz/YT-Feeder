@@ -134,7 +134,7 @@ else
     elif [ x"$@" = x"watch(best)" ]
     then
         LINK=$( cat "$CACHE/link" )
-        coproc player ( nohup mpv --ytdl-format=best "$LINK" > /dev/null 2>&1 ) &&
+        coproc player ( nohup mpv --ytdl-format=bv+ba "$LINK" > /dev/null 2>&1 ) &&
         rm "$CACHE/link"
     elif [ x"$@" = x"watch(worst)" ]
     then
